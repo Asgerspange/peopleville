@@ -26,7 +26,7 @@
   <Class Name="BaseVillager" Collapsed="true">
     <Position X="4.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAEAAAAAAAAAEAEAAAAAAAAQAgAAAAAAAAAAAgAg=</HashCode>
+      <HashCode>ACAAAEAAAAAAAAAEEEAAAAAAAAQAgAAAAAAAAAAAgAg=</HashCode>
       <FileName>Villagers\BaseVillager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -47,7 +47,7 @@
   <Class Name="PeopleVilleEngine.Village" Collapsed="true">
     <Position X="6.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAIAEAAAEAAIAAAAAAAAAAAAAEAACAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAIAIAEAAAEgAIAAAAAAAAAAAAAEAACAAAAAAE=</HashCode>
       <FileName>Village.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -55,11 +55,12 @@
       <Property Name="Locations" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="PeopleVilleEngine.VillagerNames" Collapsed="true">
+  <Class Name="PeopleVilleEngine.VillagerRoles" Collapsed="true">
     <Position X="3.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgEAAAAAAAAAAAAAAAAAAAAVAAAAAAQAAQAAAAAIAE=</HashCode>
-      <FileName>VillagerNames.cs</FileName>
+      <HashCode>AAAUAAAAAAAAAAAAAAAAAAAAFAAAAAABABAAAAAAAAE=</HashCode>
+      <FileName>VillagerRoles.cs</FileName>
+      <NewMemberFileName>VillagerNames.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PeopleVilleEngine.Locations.SimpleHouse" Collapsed="true">
