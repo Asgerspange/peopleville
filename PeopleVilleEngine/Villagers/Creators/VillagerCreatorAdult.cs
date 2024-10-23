@@ -15,6 +15,7 @@ public class VillagerCreatorAdult : IVillagerCreator
             adult.LastName = first.LastName;
             adult.IsMale = !first.IsMale;
             adult.FirstName = village.VillagerNameLibrary.GetRandomFirstName(adult.IsMale);
+            adult.Role = village.VillagerRoleLibrary.GetRandomRole();
         }
 
         home.Villagers().Add(adult);
