@@ -1,1 +1,9 @@
 .vs
+obj
+bin
+/PeopleVilleEngine/obj/
+/PeopleVilleEngine/bin/
+/PeopleVille/bin/
+/PeopleVille/obj/
+/PeopleVilleVillagerHomeless/obj/
+/PeopleVilleVillagerHomeless/bin/
