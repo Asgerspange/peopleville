@@ -11,3 +11,17 @@ C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVilleEngine\obj\De
 C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVilleEngine\obj\Debug\net8.0\refint\PeopleVilleEngine.dll
 C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.pdb
 C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVilleEngine\obj\Debug\net8.0\ref\PeopleVilleEngine.dll
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\bin\Debug\net8.0\lib\names.json
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\bin\Debug\net8.0\lib\PeopleVilleVillagerHomeless.dll
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\bin\Debug\net8.0\PeopleVilleEngine.deps.json
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\bin\Debug\net8.0\PeopleVilleEngine.dll
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\bin\Debug\net8.0\PeopleVilleEngine.pdb
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.AssemblyInfoInputs.cache
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.AssemblyInfo.cs
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.csproj.CoreCompileInputs.cache
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.sourcelink.json
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.dll
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\refint\PeopleVilleEngine.dll
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.pdb
+C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\ref\PeopleVilleEngine.dll

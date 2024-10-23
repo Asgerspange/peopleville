@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {}
+    "C:\\Users\\HFGF\\Source\\Repos\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+    "C:\\Users\\HFGF\\Source\\Repos\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
+        "projectUniqueName": "C:\\Users\\HFGF\\Source\\Repos\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
         "projectName": "PeopleVilleEngine",
-        "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
+        "projectPath": "C:\\Users\\HFGF\\Source\\Repos\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
         "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\obj\\",
+        "outputPath": "C:\\Users\\HFGF\\Source\\Repos\\peopleville\\PeopleVilleEngine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
