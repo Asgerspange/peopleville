@@ -8,18 +8,23 @@ public abstract class BaseVillager
     public string LastName { get; set; }
     public string Hobby { get; set; }
     public bool IsMale { get; set; }
+    public bool IsWhite { get; set; }
     private Village _village;
     public ILocation? Home { get; set; } = null;
     public bool HasHome() => Home != null;
-    public string Role {  get; set; }
+    public string Role { get; set; } = "Arbejdsløs";
     public Wallet PersonalWallet { get; private set; } // Ny egenskab tilføjet til baseclass
 
     protected BaseVillager(Village village)
     {
         _village = village;
         IsMale = RNG.GetInstance().Next(0, 2) == 0;
+        IsWhite = RNG.GetInstance().Next(0, 5) != 0;
         (FirstName, LastName) = village.VillagerNameLibrary.GetRandomNames(IsMale);
-        Role = village.VillagerRoleLibrary.GetRandomRole();
+        if (Age >= 18)
+        {
+            Role = village.VillagerRoleLibrary.GetRandomRole();
+        }
         Hobby = village.VillagerHobbyLibrary.GetRandomHobby();
         PersonalWallet = new Wallet("$", 100m); // Initialiserer pungen med $ og 100 dollars som start kapital
     }

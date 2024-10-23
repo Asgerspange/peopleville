@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PeopleVilleVillagerHomeless")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12b508dcf50a73f6d928128d46090778d45c7ef1")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df0e1809f75ac2acccc534c19a9ade732752e325")]
->>>>>>> master
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f31b1973352d481e535f413d1d8f7eb2d075308a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PeopleVilleVillagerHomeless")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PeopleVilleVillagerHomeless")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
