@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿
 
 namespace PeopleVilleEngine;
 public class VillagerRoles
@@ -22,17 +22,11 @@ public class VillagerRoles
 
     private void LoadNamesFromJsonFile()
     {
-        string jsonFile = "lib\\roles.json";
-        if (!File.Exists(jsonFile))
-            throw new FileNotFoundException(jsonFile);
-
-        string jsonData = File.ReadAllText(jsonFile);
-        var roleData = JsonSerializer.Deserialize<RolesData>(jsonData);
-
         _rolesWithWeights = new (string, int)[]
         {
+            ("Postbud", 1),    // 1% chance
             ("Kriminel", 5),  // 5% chance
-            ("Politi", 10),   // 10% chance
+            ("Politi", 9),   // 9% chance
             ("Civil", 85)     // 85% chance
         };
     }

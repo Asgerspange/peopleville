@@ -5,9 +5,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<Compile Remove="Library\**" />
-		<EmbeddedResource Remove="Library\**" />
-		<None Remove="Library\**" />
+		<Compile Remove="Library*" />
+		<EmbeddedResource Remove="Library*" />
+		<None Remove="Library**" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="lib\names.json">
@@ -18,6 +18,7 @@
 		</None>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)PeopleVille\bin\$(Configuration)\net8.0\lib /I /Y" />
+		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)PeopleVille\bin$(Configuration)\net8.0\lib /I /Y" />
+		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)VillageView\bin$(Configuration)\net8.0-windows\lib /I /Y" />
 	</Target>
 </Project>
