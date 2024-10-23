@@ -19,6 +19,7 @@ public abstract class BaseVillager
         _village = village;
         IsMale = RNG.GetInstance().Next(0, 2) == 0;
         (FirstName, LastName) = village.VillagerNameLibrary.GetRandomNames(IsMale);
+        PersonalWallet = new Wallet("$", 100m); // Laver pungen med $ og 100 dollars som start kapital
         Role = village.VillagerRoleLibrary.GetRandomRole();
         Hobby = village.VillagerHobbyLibrary.GetRandomHobby();
         PersonalWallet = new Wallet("$", 100m); // Initialiserer pungen med $ og 100 dollars som start kapital
