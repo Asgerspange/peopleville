@@ -10,6 +10,8 @@ public class Village
     public List<BaseVillager> Villagers { get; } = new();
     public List<ILocation> Locations { get; } = new();
     public VillagerNames VillagerNameLibrary { get; } = VillagerNames.GetInstance();
+    public VillagerRoles VillagerRoleLibrary { get; } = VillagerRoles.GetInstance();
+    public VillagerHobbies VillagerHobbyLibrary { get; } = VillagerHobbies.GetInstance();
 
     public Village()
     {
