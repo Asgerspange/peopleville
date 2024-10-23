@@ -12,7 +12,7 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="0">
+        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,444,0">
             <Grid  
  Name="buttonPanel">
                 <Grid.ColumnDefinitions>

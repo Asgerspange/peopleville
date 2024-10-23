@@ -8,19 +8,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PeopleVilleEngine;
 
 namespace VillageView
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
 
-            List<string> myStrings = new List<string>() { "Mustafa", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape" };
+            var village = new Village();
+            List<string> myStrings = new List<string>();
+
+            foreach (var villager in village.Villagers)
+            {
+                myStrings.Add($"{villager.FirstName} {villager.LastName}");
+            }
 
             int row = 0;
             int col = 0;
