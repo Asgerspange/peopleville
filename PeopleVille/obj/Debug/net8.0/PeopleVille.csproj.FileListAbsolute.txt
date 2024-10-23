@@ -39,3 +39,4 @@ C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\refint\Peopl
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.pdb
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.genruntimeconfig.cache
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\ref\PeopleVille.dll
+C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVille\obj\Debug\net8.0\PeopleVille.sourcelink.json

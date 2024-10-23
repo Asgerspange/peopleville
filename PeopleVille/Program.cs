@@ -10,7 +10,11 @@ foreach (var location in village.Locations)
     var locationStatus = location.Name;
     foreach(var villager in location.Villagers().OrderByDescending(v => v.Age))
     {
-        locationStatus += $" {villager}";
+        string Status = "Barn";
+        if (villager.Age > 18) {
+            Status = "Voksen";
+        }
+        locationStatus += $"\n{Status}: {villager}";
     }
-    Console.WriteLine(locationStatus);
+    Console.WriteLine(locationStatus + "\n");
 }

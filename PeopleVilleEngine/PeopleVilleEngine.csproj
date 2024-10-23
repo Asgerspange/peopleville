@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+<<<<<<< HEAD
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -19,6 +20,9 @@
     <None Update="lib\PeopleVilleVillagerHomeless.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="lib\roles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
@@ -26,3 +30,27 @@
   </Target>
 
 </Project>
+=======
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Library\**" />
+		<EmbeddedResource Remove="Library\**" />
+		<None Remove="Library\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="lib\names.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="lib\PeopleVilleVillagerHomeless.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)PeopleVille\bin\$(Configuration)\net8.0\lib /I /Y" />
+	</Target>
+</Project>
+>>>>>>> master
