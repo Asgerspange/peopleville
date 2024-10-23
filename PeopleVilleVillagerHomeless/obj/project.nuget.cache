@@ -1,13 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "b9nUNx1GjnE=",
+  "dgSpecHash": "xdKdVVgkP1I=",
   "success": false,
-  "projectFilePath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
-    "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
-    "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+  "expectedPackageFiles": [],
   "logs": [
     {
       "code": "NU1201",

@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectUniqueName": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "projectName": "PeopleVilleVillagerHomeless",
-      "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\obj\\",
+      "outputPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleVillagerHomeless\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,8 +54,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
-              "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
+            "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+              "projectPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
             }
           }
         }
@@ -85,25 +85,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          }
-        ],
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
