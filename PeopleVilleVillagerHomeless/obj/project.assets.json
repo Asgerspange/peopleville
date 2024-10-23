@@ -27,19 +27,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HFGF\\.nuget\\packages\\": {}
+    "C:\\Users\\HFGF\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectUniqueName": "C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "projectName": "PeopleVilleVillagerHomeless",
-      "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectPath": "C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\obj\\",
+      "outputPath": "C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleVillagerHomeless\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -54,8 +59,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
-              "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
+            "C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+              "projectPath": "C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
             }
           }
         }
@@ -93,5 +98,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\HFGF\\Documents\\repo\\peopleville\\PeopleVilleVillagerHomeless\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
