@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -9,6 +10,7 @@ namespace PeopleVilleEngine
         private string[] _hobbies = new string[] { };
         RNG _random;
         private static VillagerHobbies? _instance = null;
+        private List<BaseVillager> _villagers = new List<BaseVillager>(); // Holds the villagers
 
         private VillagerHobbies()
         {
@@ -44,6 +46,41 @@ namespace PeopleVilleEngine
         }
 
         public string GetRandomHobbyForVillager() => GetRandomHobby();
+
+        // Method to add villagers to the list
+        public void AddVillager(BaseVillager villager)
+        {
+            _villagers.Add(villager);
+        }
+
+        // Method to detect "L" key press and trigger villagers' hobbies
+        public void DetectKeyPressAndPerformHobbies()
+        {
+            Console.WriteLine("Press 'L' to make all villagers perform their hobbies...");
+
+            while (true) // Infinite loop to constantly check for key presses
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+
+                    if (key == ConsoleKey.L) // If 'L' key is pressed
+                    {
+                        PerformVillagerHobbies();
+                    }
+                }
+            }
+        }
+
+        // Method to perform hobbies for all villagers and print the result
+        private void PerformVillagerHobbies()
+        {
+            foreach (var villager in _villagers)
+            {
+                string hobbyMessage = villager.PerformHobby();
+                Console.WriteLine(hobbyMessage);
+            }
+        }
 
         private class HobbiesData
         {
