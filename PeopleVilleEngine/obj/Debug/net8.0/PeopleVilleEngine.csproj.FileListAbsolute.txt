@@ -25,3 +25,4 @@ C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\People
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\refint\PeopleVilleEngine.dll
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.pdb
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVilleEngine\obj\Debug\net8.0\ref\PeopleVilleEngine.dll
+C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVilleEngine\obj\Debug\net8.0\PeopleVilleEngine.sourcelink.json
