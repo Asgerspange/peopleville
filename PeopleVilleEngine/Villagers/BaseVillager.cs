@@ -11,6 +11,7 @@ public abstract class BaseVillager
     private Village _village;
     public ILocation? Home { get; set; } = null;
     public bool HasHome() => Home != null;
+    public Wallet PersonalWallet { get; private set; } // Ny egenskab tilføjet til baseclass
 
     protected BaseVillager(Village village)
     {
@@ -18,6 +19,7 @@ public abstract class BaseVillager
         IsMale = RNG.GetInstance().Next(0, 2) == 0;
         (FirstName, LastName) = village.VillagerNameLibrary.GetRandomNames(IsMale);
         (Hobby) = village.VillagerHobbyLibrary.GetRandomHobby();
+        PersonalWallet = new Wallet("$", 100m); // Initialiserer pungen med $ og 100 dollars som start kapital
     }
 
     public override string ToString()
