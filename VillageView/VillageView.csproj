@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Images\FemaleBlackVillager.jpg" />
     <None Remove="Images\FemaleWhiteVillager.jpg" />
+    <None Remove="Images\hatman.jpg" />
     <None Remove="Images\MaleBlackVillager.jpg" />
     <None Remove="Images\MaleWhiteVillager.jpg" />
   </ItemGroup>
@@ -24,6 +25,7 @@
   <ItemGroup>
     <Resource Include="Images\FemaleBlackVillager.jpg" />
     <Resource Include="Images\FemaleWhiteVillager.jpg" />
+    <Resource Include="Images\hatman.jpg" />
     <Resource Include="Images\MaleBlackVillager.jpg" />
     <Resource Include="Images\MaleWhiteVillager.jpg" />
   </ItemGroup>
