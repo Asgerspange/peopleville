@@ -12,32 +12,17 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,444,0">
-            <Grid  
- Name="buttonPanel">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="Margin" Value="5"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Height" Value="150"/>
-                    </Style>
-                </Grid.Resources>
-            </Grid>
+        <!-- Left Panel: Scrollable Villager Grid with Borders for each Housing Group -->
+        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,444,0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="mainPanel" Margin="10">
+                <!-- Housing Groups will be dynamically added here -->
+            </StackPanel>
         </ScrollViewer>
 
+        <!-- Right Panel: Info Panel -->
         <StackPanel Grid.Column="1" Name="infoPanel" Width="450">
-            <Label Content="Person Info" FontSize="32"/>
-            <Label x:Name="dayLabel" Content="asdasd" FontSize="32"/>
+            <Label Content="Person Info" FontSize="32" />
+            <Label x:Name="dayLabel" Content="Day Info" FontSize="32" />
         </StackPanel>
     </Grid>
 </Window>
