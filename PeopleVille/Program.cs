@@ -3,6 +3,7 @@ Console.WriteLine("PeopleVille");
 
 //Create village
 var village = new Village();
+var time = new Time();
 Console.WriteLine(village.ToString());
 
 foreach (var location in village.Locations)
