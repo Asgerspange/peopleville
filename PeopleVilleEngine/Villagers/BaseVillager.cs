@@ -29,6 +29,11 @@ public abstract class BaseVillager
         PersonalWallet = new Wallet("$", 100m); // Initialiserer pungen med $ og 100 dollars som start kapital
     }
 
+    public string PerformHobby()
+    {
+        return $"{FirstName} {LastName} is {Hobby}.";
+    }
+
     public override string ToString()
     {
         return $"{FirstName} {LastName} ({Age} years) - Job: {Role} - Hobby: {Hobby}";
