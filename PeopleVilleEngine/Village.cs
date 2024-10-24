@@ -74,7 +74,7 @@ public class Village
         {
             Console.WriteLine($"Village Creeater loaded: {type}");
             outputVillagerCreators.Add((IVillagerCreator)Activator.CreateInstance(type));
-        }
+        } 
     }
 
     public override string ToString()

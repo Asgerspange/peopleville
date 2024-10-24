@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -27,18 +28,20 @@ namespace PeopleVilleEngine
         private void LoadNamesFromJsonFile()
         {
             string jsonFile = "lib\\roles.json";
-            Console.Write(jsonFile);
+            Trace.WriteLine(jsonFile);
             if (!File.Exists(jsonFile))
             {
                 throw new FileNotFoundException($"JSON file not found: {jsonFile}");
             }
 
             var json = File.ReadAllText(jsonFile);
+            Trace.WriteLine(json);
             var rolesWrapper = JsonSerializer.Deserialize<RoleData[]>(json);
-
+            Trace.WriteLine(rolesWrapper);
             _rolesWithWeights = rolesWrapper
                     .Select(r => (r.Role, r.Weight))
                     .ToArray();
+            Trace.WriteLine(_rolesWithWeights);            
         }
 
         private string GetWeightedRandomRole((string Role, int Weight)[] rolesWithWeights)
