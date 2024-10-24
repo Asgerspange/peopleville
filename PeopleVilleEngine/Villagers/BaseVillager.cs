@@ -45,12 +45,22 @@ public abstract class BaseVillager
             var petName = GenerateRandomPetName();
             Pet = new Pet(petName, petType, new Random().Next(1, 11), _village);
         }
-        catch // Error handling
+        catch (Exception ex) // Error handling
         {
+            Console.WriteLine($"Fejl ved tildeling af kæledyr: {ex.Message}");
             var petName = GenerateRandomPetName();
-            Pet = new Pet(petName, "Regnorm", 1, _village);
+            var fallbackPetType = "Regnorm";
+
+            // Sikre at fallbackPetType er tilføjet til listen over mulige kæledyrstyper
+            if (!Pet.PossiblePetTypes.Contains(fallbackPetType))
+            {
+                Pet.PossiblePetTypes.Add(fallbackPetType);
+            }
+
+            Pet = new Pet(petName, fallbackPetType, 1, _village);
         }
     }
+
 
     public void CheckPetAge()
     {

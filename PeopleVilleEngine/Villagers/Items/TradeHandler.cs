@@ -16,7 +16,7 @@ public static class TradeHandler
             throw new InvalidOperationException($"{villager1.FirstName} {villager1.LastName} Har ikke nok penge.");
         }
     }
-
+     
     public static void TradeWeapon(ArmedVillager villager1, ArmedVillager villager2)
     {
         var weaponProperty = typeof(ArmedVillager).GetProperty("Weapon", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);

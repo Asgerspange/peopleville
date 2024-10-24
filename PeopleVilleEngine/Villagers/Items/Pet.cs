@@ -1,46 +1,85 @@
 ﻿using PeopleVilleEngine;
 using System;
 using System.Collections.Generic;
-
-public class Pet
+using System.IO;
+using System.Text.Json;
+ 
+// Interface for Pet
+public interface IPet
 {
-    public Guid Id { get; private set; }
+    Guid Id { get; }
+    string Name { get; set; }
+    string Type { get; set; }
+    int Age { get; set; }
+    void CheckAndRemovePet();
+}
+
+// Base class for Animal
+public abstract class Animal
+{
+    public Guid Id { get; protected set; }
     public string Name { get; set; }
     public string Type { get; set; }
     public int Age { get; set; }
-    public static readonly List<string> PossiblePetTypes = new List<string> { "Hund", "Kat", "Gris", "Ko", "Hest" };
-    private Village _village;
 
-    public Pet(string name, string type, int age, Village village)
+    protected Animal(string name, string type, int age)
     {
         Id = Guid.NewGuid();
         Name = name;
         Type = type;
         Age = age;
+    }
+
+    public abstract void CheckAndRemovePet();
+}
+
+//Interface der nedarves fra Animal
+public class Pet : Animal, IPet
+{
+    public static readonly List<string> PossiblePetTypes = new List<string> { "Hund", "Kat", "Gris", "Ko", "Hest" };
+    private static List<string> _possiblePetTypes = PossiblePetTypes;
+    private Village _village;
+
+    public Pet(string name, string type, int age, Village village) : base(name, type, age)
+    {
         _village = village;
     }
 
-    // Metode til at tildele en tilfældig kæledyrstype fra listen over mulige typer
+    // Indlæser kæledyrstyper fra en JSONfil
+    public static void LoadPetTypesFromJsonFile()
+    {
+        string jsonFile = "lib\\petTypes.json";
+        if (!File.Exists(jsonFile))
+            throw new FileNotFoundException(jsonFile);
+
+        string jsonData = File.ReadAllText(jsonFile);
+        var petTypesData = JsonSerializer.Deserialize<List<string>>(jsonData);
+        if (petTypesData != null)
+        {
+            _possiblePetTypes = petTypesData;
+        }
+    }
+
+    // tildeler en tilfældig kæledyrstype fra listen over mulige typer
     public static string AssignRandomPetType()
     {
         try
         {
-            // Henter en instans af RNG
+            // Bruger RNG
             var rng = RNG.GetInstance();
-            // Genererer et tilfældigt indeks ud fra mulige typer kæledyr
-            int index = rng.Next(PossiblePetTypes.Count);
-            
-            return PossiblePetTypes[index];
+            int index = rng.Next(_possiblePetTypes.Count);
+
+            return _possiblePetTypes[index];
         }
         catch (Exception ex)
         {
-            // Error Handling: Logger undtagelsen og returnerer en "Regnorm" som standard
+            // Error Handling: Logger undtagelsen og returnerer en standard kæledyrstype
             Console.WriteLine($"Fejl ved tildeling af tilfældigt kæledyr: {ex.Message}");
-            return "Regnorm";
+            return _possiblePetTypes[0]; // Returnerer den første type i listen som standard
         }
     }
 
-    public void CheckAndRemovePet()
+    public override void CheckAndRemovePet()
     {
         if (Age >= 10)
         {
@@ -54,7 +93,7 @@ public class Pet
         if (owner != null)
         {
             owner.RemovePet();
-            Console.WriteLine($"Kæledyret {Name} (ID: {Id}) er blevet fjernet fra ejeren, da det er blevet 10 år.");
+            Console.WriteLine($"Kæledyret {Name} (ID: {Id}) er blevet fjernet fra ejeren, da kæledyret er blevet 10 år.");
         }
     }
 

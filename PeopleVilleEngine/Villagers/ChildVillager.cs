@@ -13,7 +13,7 @@ namespace PeopleVilleEngine.Villagers
             Age = RNG.GetInstance().Next(0, 18);
             Toys = new List<ChildrenToys>();
         }
-
+         
         public ChildVillager(Village village, int age) : this(village)
         {
             Age = age;

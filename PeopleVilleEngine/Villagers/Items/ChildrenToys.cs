@@ -1,36 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 namespace PeopleVilleEngine.Villagers.Items
 {
-    public class ChildrenToys
+    // Interface for ChildrenToys
+    public interface IChildrenToys
+    {
+        string Name { get; set; }
+        string Description { get; set; }
+    }
+
+    // Base class for Toy
+    public abstract class Toy
     {
         public string Name { get; set; }
         public string Description { get; set; }
 
-        // Constructor tager parametre name/description og initialiserer objektet.
-        public ChildrenToys(string name, string description = "Legetøj")
+        protected Toy(string name, string description = "Legetøj")
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Legetøjets navn kan ikke være null eller tomt.", nameof(name));
             }
-
+             
             Name = name;
             Description = description;
         }
+    }
 
+    public class ChildrenToys : Toy, IChildrenToys
+    {
         // Statisk liste af legetøj
-        private static List<ChildrenToys> toyList = new List<ChildrenToys>
-        {
-            new ChildrenToys("Legetøjsbil"),
-            new ChildrenToys("ActionFigur"),
-            new ChildrenToys("Fodbold"),
-            new ChildrenToys("Dukke"),
-            new ChildrenToys("Rubiksterning")
-        };
+        private static List<ChildrenToys> toyList = new List<ChildrenToys>();
 
-        // Metode til at få tilfældigt legetøj
+        public ChildrenToys(string name, string description = "Legetøj") : base(name, description)
+        {
+        }
+
+        // Indlæser legetøjsdata fra en JSON fil
+        public static void LoadToysFromJsonFile()
+        {
+            string jsonFile = "lib\\toys.json";
+            if (!File.Exists(jsonFile))
+                throw new FileNotFoundException(jsonFile);
+
+            string jsonData = File.ReadAllText(jsonFile);
+            var toysData = JsonSerializer.Deserialize<List<ChildrenToys>>(jsonData);
+            if (toysData != null)
+            {
+                toyList = toysData;
+            }
+        }
+
+        // Tilfældig legetøj
         public static ChildrenToys GetRandomToy()
         {
             try
