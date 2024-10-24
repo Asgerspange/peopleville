@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings
+﻿namespace PeopleVilleEngine.Buildings.SuperMarket
 {
     internal class SuperMarket
     {
@@ -50,16 +50,10 @@
             locations.Add(new SuperMarketLocation { Address = address });
         }
 
+        // should get location from Locations folder
         public class SuperMarketLocation
         {
             public string Address { get; set; }
-        }
-
-        public class Food
-        {
-            public string Name { get; set; }
-            public decimal Price { get; set; }
-            public int Quantity { get; set; }
         }
     }
 }

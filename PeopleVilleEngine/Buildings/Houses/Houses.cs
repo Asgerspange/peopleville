@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings
+﻿namespace PeopleVilleEngine.Buildings.Houses
 {
     internal class Houses
     {
@@ -43,21 +43,6 @@
                 Console.WriteLine($"Maintenance requested for house at {house.Address}: {issue}");
             }
         }
-    }
-
-    internal class House
-    {
-        public Guid Id { get; set; }
-        public string Address { get; set; }
-        public string Owner { get; set; }
-        public int NumberOfRooms { get; set; }
-        public List<Resident> Residents { get; set; }
-    }
-
-    internal class Resident
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
     }
 }
 

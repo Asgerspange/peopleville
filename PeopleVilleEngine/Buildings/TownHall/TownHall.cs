@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings
+﻿namespace PeopleVilleEngine.Buildings.TownHall
 {
     internal class TownHall
     {
@@ -29,12 +29,5 @@
         {
             Console.WriteLine($"Permit '{permitType}' issued to {citizenName}.");
         }
-    }
-
-    internal class Citizen
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
     }
 }

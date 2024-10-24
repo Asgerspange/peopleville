@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings
+﻿namespace PeopleVilleEngine.Buildings.Prison
 {
     internal class Prison
     {
@@ -50,14 +50,5 @@
                 Console.WriteLine($"Visit scheduled for {visitorName} to see {inmate.Name} on {visitDate}");
             }
         }
-    }
-
-    internal class Inmate
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Crime { get; set; }
-        public int CellNumber { get; set; }
     }
 }

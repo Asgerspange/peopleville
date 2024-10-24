@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings
+﻿namespace PeopleVilleEngine.Buildings.Bank
 {
     internal class Bank
     {
@@ -26,7 +26,7 @@
             }
             return false;
         }
-                                                            
+
         public bool Withdraw(int accountNumber, decimal amount)
         {
             if (accounts.TryGetValue(accountNumber, out var account) && account.Balance >= amount)
@@ -47,10 +47,5 @@
         }
     }
 
-    internal class BankAccount
-    {
-        public int AccountNumber { get; set; }
-        public string AccountHolder { get; set; }
-        public decimal Balance { get; set; }
-    }
+    
 }
