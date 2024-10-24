@@ -7,11 +7,11 @@ namespace PeopleVilleEngine
 {
     public class VillagerRoles
     {
-        private (string Role, int Weight)[] _rolesWithWeights;
+        private (string Role, int Weight, decimal PaymentAmount)[] _rolesWithWeights;
         RNG _random;
         private static VillagerRoles? _instance = null;
 
-        private VillagerRoles()
+        public VillagerRoles()
         {
             _random = RNG.GetInstance();
             LoadNamesFromJsonFile();
@@ -37,11 +37,21 @@ namespace PeopleVilleEngine
             var rolesWrapper = JsonSerializer.Deserialize<RoleData[]>(json);
 
             _rolesWithWeights = rolesWrapper
-                    .Select(r => (r.Role, r.Weight))
+                    .Select(r => (r.Role, r.Weight, r.PaymentAmount))
                     .ToArray();
         }
 
-        private string GetWeightedRandomRole((string Role, int Weight)[] rolesWithWeights)
+        public decimal GetRolePaymentAmount(string role)
+        {
+            var roleData = _rolesWithWeights.FirstOrDefault(r => r.Role == role);
+            if (roleData == default)
+            {
+                throw new ArgumentException($"Role '{role}' not found.");
+            }
+            return roleData.PaymentAmount;
+        }
+
+        private string GetWeightedRandomRole((string Role, int Weight, decimal PaymentAmount)[] rolesWithWeights)
         {
             if (rolesWithWeights.Length == 0)
                 throw new InvalidOperationException("No valid roles with non-zero weight.");
@@ -50,7 +60,7 @@ namespace PeopleVilleEngine
             int randomValue = _random.Next(totalWeight);
             int cumulativeWeight = 0;
 
-            foreach (var (role, weight) in rolesWithWeights)
+            foreach (var (role, weight, _) in rolesWithWeights)
             {
                 cumulativeWeight += weight;
 
@@ -69,6 +79,7 @@ namespace PeopleVilleEngine
         {
             public string Role { get; set; }
             public int Weight { get; set; }
+            public decimal PaymentAmount { get; set; }
         }
     }
 }

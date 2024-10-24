@@ -1,6 +1,9 @@
-﻿namespace PeopleVilleEngine.Locations.Buildings.Bank
+﻿using PeopleVilleEngine.Villagers;
+using System.Security.Principal;
+
+namespace PeopleVilleEngine.Locations.Buildings.Bank
 {
-    internal class Bank
+    public class Bank : VillagerRoles
     {
         private Dictionary<int, BankAccount> accounts = new Dictionary<int, BankAccount>();
         private int nextAccountNumber = 1;
@@ -45,5 +48,24 @@
             }
             throw new ArgumentException("Account not found.");
         }
+
+        public int PayCheck(decimal paymentAmount, string role)
+        {
+            var villagerRoles = VillagerRoles.GetInstance();
+            decimal amountToAdd = villagerRoles.GetRolePaymentAmount(role);
+            int accountsUpdated = 0;
+
+            foreach (var account in accounts.Values)
+            {
+                if (account.AccountHolder == role)
+                {
+                    account.Balance += amountToAdd;
+                    accountsUpdated++;
+                }
+            }
+
+            return accountsUpdated;
+        }
+
     }
 }
