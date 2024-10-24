@@ -3,18 +3,28 @@ Console.WriteLine("PeopleVille");
 
 //Create village
 var village = new Village();
-Console.WriteLine(village.ToString());
-
-foreach (var location in village.Locations)
+while (true)
 {
-    var locationStatus = location.Name;
-    foreach(var villager in location.Villagers().OrderByDescending(v => v.Age))
+    Console.Clear();
+    Console.WriteLine(village.ToString());
+    Console.WriteLine(village.Time);
+    foreach (var location in village.Locations)
     {
-        string Status = "Barn";
-        if (villager.Age > 18) {
-            Status = "Voksen";
+        var locationStatus = location.Name;
+        foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
+        {
+            string Status = "Barn";
+            if (villager.Age > 18)
+            {
+                Status = "Voksen";
+            }
+            locationStatus += $"\n{Status}: {villager}";
         }
-        locationStatus += $"\n{Status}: {villager}";
+        Console.WriteLine(locationStatus + "\n");
     }
-    Console.WriteLine(locationStatus + "\n");
+
+    if (Console.ReadKey(true).Key == ConsoleKey.Q)
+    {
+        village.Time.UpdateDay();
+    }
 }
