@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PeopleVilleEngine.Buildings.TownHall
+namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
 {
-    internal class Citizen
+    internal class Food
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

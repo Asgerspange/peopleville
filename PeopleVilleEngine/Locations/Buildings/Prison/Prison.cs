@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings.Prison
+﻿namespace PeopleVilleEngine.Locations.Buildings.Prison
 {
     internal class Prison
     {

@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings.TownHall
+﻿namespace PeopleVilleEngine.Locations.Buildings.TownHall
 {
     internal class TownHall
     {

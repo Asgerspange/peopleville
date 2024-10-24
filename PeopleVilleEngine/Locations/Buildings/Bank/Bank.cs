@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings.Bank
+﻿namespace PeopleVilleEngine.Locations.Buildings.Bank
 {
     internal class Bank
     {
@@ -46,6 +46,4 @@
             throw new ArgumentException("Account not found.");
         }
     }
-
-    
 }

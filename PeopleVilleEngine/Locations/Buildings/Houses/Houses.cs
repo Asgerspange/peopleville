@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings.Houses
+﻿namespace PeopleVilleEngine.Locations.Buildings.Houses
 {
     internal class Houses
     {

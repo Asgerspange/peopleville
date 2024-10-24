@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PeopleVilleEngine.Buildings.Bank
+namespace PeopleVilleEngine.Locations.Buildings.Bank
 {
     internal class BankAccount
     {

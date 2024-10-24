@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Buildings.SuperMarket
+﻿namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
 {
     internal class SuperMarket
     {
