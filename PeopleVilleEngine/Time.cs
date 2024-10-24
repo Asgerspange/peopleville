@@ -16,7 +16,7 @@ namespace PeopleVilleEngine
             timeThread.Start();
         }
 
-        private void CheckForKeyPress()
+        public void CheckForKeyPress()
         {
             while (true)
             {
@@ -27,7 +27,7 @@ namespace PeopleVilleEngine
             }
         }
 
-        private void UpdateDay()
+        public void UpdateDay()
         {
             dayCount++;
             Day = $"Day {dayCount}";
@@ -39,7 +39,7 @@ namespace PeopleVilleEngine
             Console.Write(this.ToString());
         }
 
-        protected virtual void OnNewDayStarted()
+        public virtual void OnNewDayStarted()
         {
             NewDayStarted?.Invoke();
         }
