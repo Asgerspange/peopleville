@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectUniqueName": "C:\\Users\\HFGF\\Documents\\SDE datatek2\\SDE Datatekniker 2\\Peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "projectName": "PeopleVilleVillagerHomeless",
-      "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
+      "projectPath": "C:\\Users\\HFGF\\Documents\\SDE datatek2\\SDE Datatekniker 2\\Peopleville\\PeopleVilleVillagerHomeless\\PeopleVilleVillagerHomeless.csproj",
       "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleVillagerHomeless\\obj\\",
+      "outputPath": "C:\\Users\\HFGF\\Documents\\SDE datatek2\\SDE Datatekniker 2\\Peopleville\\PeopleVilleVillagerHomeless\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,8 +54,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
-              "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
+            "C:\\Users\\HFGF\\Documents\\SDE datatek2\\SDE Datatekniker 2\\Peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+              "projectPath": "C:\\Users\\HFGF\\Documents\\SDE datatek2\\SDE Datatekniker 2\\Peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
             }
           }
         }

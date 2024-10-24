@@ -40,3 +40,24 @@ C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.genruntimeconfig.cache
 C:\Users\HFGF\Source\Repos\peopleville\PeopleVille\obj\Debug\net8.0\ref\PeopleVille.dll
 C:\Users\HFGF\Downloads\PeopleVille2023\PeopleVille2023\PeopleVille\obj\Debug\net8.0\PeopleVille.sourcelink.json
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\lib\names.json
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\lib\PeopleVilleVillagerHomeless.dll
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVille.exe
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVille.deps.json
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVille.runtimeconfig.json
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVille.dll
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVille.pdb
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVilleEngine.dll
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\bin\Debug\net8.0\PeopleVilleEngine.pdb
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.csproj.AssemblyReference.cache
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.AssemblyInfoInputs.cache
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.AssemblyInfo.cs
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.csproj.CoreCompileInputs.cache
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.sourcelink.json
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVi.50A449A3.Up2Date
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.dll
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\refint\PeopleVille.dll
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.pdb
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\PeopleVille.genruntimeconfig.cache
+C:\Users\HFGF\Documents\SDE datatek2\SDE Datatekniker 2\Peopleville\PeopleVille\obj\Debug\net8.0\ref\PeopleVille.dll
