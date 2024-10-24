@@ -9,15 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Villager.jpg" />
+    <None Remove="Images\FemaleBlackVillager.jpg" />
+    <None Remove="Images\FemaleWhiteVillager.jpg" />
+    <None Remove="Images\MaleBlackVillager.jpg" />
+    <None Remove="Images\MaleWhiteVillager.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PeopleVilleEngine\PeopleVilleEngine.csproj" />
+    <ProjectReference Include="..\PeopleVilleEngine\PeopleVilleEngine.csproj">
+      <TreatAsUsed>true</TreatAsUsed>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\Villager.jpg" />
+    <Resource Include="Images\FemaleBlackVillager.jpg" />
+    <Resource Include="Images\FemaleWhiteVillager.jpg" />
+    <Resource Include="Images\MaleBlackVillager.jpg" />
+    <Resource Include="Images\MaleWhiteVillager.jpg" />
   </ItemGroup>
 
 </Project>

@@ -8,29 +8,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using PeopleVilleEngine;
+using System.Windows.Threading;
 
 namespace VillageView
 {
     public partial class MainWindow : Window
     {
-        
+        private Village village = new Village();
         public MainWindow()
         {
             InitializeComponent();
 
-            var village = new Village();
-            List<string> myStrings = new List<string>();
 
-            foreach (var villager in village.Villagers)
-            {
-                myStrings.Add($"{villager.FirstName} {villager.LastName}");
-            }
+            village.Time.NewDayStarted += UpdateDayDisplay;
 
             int row = 0;
             int col = 0;
 
-            foreach (string str in myStrings)
+
+            foreach (var villager in village.Villagers)
             {
                 // Create a Grid to hold the image and label for each item
                 Grid itemGrid = new Grid();
@@ -41,14 +39,36 @@ namespace VillageView
 
                 // Create an Image control (you'll need to add image loading logic later)
                 Image image = new Image();
-                image.Source = new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/Villager.jpg")); // Set the image source here
+
+                if (villager.IsMale)
+                {
+                    if (!villager.IsWhite)
+                    {
+                        image.Source = new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleBlackVillager.jpg")); // Set the image to male black villager
+                    }
+                    else
+                    {
+                        image.Source = new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleWhiteVillager.jpg")); // Set the image to male white villager
+                    }
+                }
+                else
+                {
+                    if (!villager.IsWhite)
+                    {
+                        image.Source = new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/FemaleBlackVillager.jpg")); // Set the image to female black villager
+                    }
+                    else
+                    {
+                        image.Source = new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/FemaleWhiteVillager.jpg")); // Set the image to female white villager
+                    }
+                }
                 image.Stretch = Stretch.Uniform;
                 Grid.SetRow(image, 0);
                 itemGrid.Children.Add(image);
 
                 // Create a Label for the string
                 Label label = new Label();
-                label.Content = str;
+                label.Content = $"{villager.FirstName} {villager.LastName}";
                 label.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(label, 1);
                 itemGrid.Children.Add(label);
@@ -58,9 +78,16 @@ namespace VillageView
                 button.Content = itemGrid;
                 Grid.SetRow(button, row);
                 Grid.SetColumn(button, col);
-                buttonPanel.Children.Add(button); // Add the *button* to the panel
+                button.Click += (sender, e) => {
+                    infoPanel.Children.Clear();
+                    infoPanel.Children.Add(new Label { Content = "Info Panel", FontSize = 32 });
+                    infoPanel.Children.Add(new Label { Content = $"Dag: {village.Time.ToString()}", FontSize = 16 });
+                    infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16 });
+                    infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16});
+                };
 
-                // Update column and row counters
+                buttonPanel.Children.Add(button);
+
                 col++;
                 if (col >= 7)
                 {
@@ -74,6 +101,21 @@ namespace VillageView
                     buttonPanel.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 }
             }
+
+            this.PreviewKeyUp += MainWindow_PreviewKeyUp;
+        }
+
+        private void MainWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Q)
+            {
+                village.Time.UpdateDay();
+            }
+        }
+
+        private void UpdateDayDisplay()
+        {
+            dayLabel.Content = village.Time.ToString();
         }
     }
 }

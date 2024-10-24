@@ -36,7 +36,8 @@
         </ScrollViewer>
 
         <StackPanel Grid.Column="1" Name="infoPanel" Width="450">
-            <Label Content="INFO PANEL" FontSize="32"/>
+            <Label Content="Person Info" FontSize="32"/>
+            <Label x:Name="dayLabel" Content="asdasd" FontSize="32"/>
         </StackPanel>
     </Grid>
 </Window>
