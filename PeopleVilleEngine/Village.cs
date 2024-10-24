@@ -12,6 +12,7 @@ public class Village
     public VillagerNames VillagerNameLibrary { get; } = VillagerNames.GetInstance();
     public VillagerRoles VillagerRoleLibrary { get; } = VillagerRoles.GetInstance();
     public VillagerHobbies VillagerHobbyLibrary { get; } = VillagerHobbies.GetInstance();
+    public readonly Time Time = new Time();
 
     public Village()
     {
