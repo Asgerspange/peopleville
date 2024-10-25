@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VillageView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600">
+        Title="MainWindow" Height="900" Width="1600" Background="#171b33">
+    <Window.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="#282828"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -20,9 +26,11 @@
         </ScrollViewer>
 
         <!-- Right Panel: Info Panel -->
-        <StackPanel Grid.Column="1" Name="infoPanel" Width="450">
-            <Label Content="Person Info" FontSize="32" />
-            <Label x:Name="dayLabel" Content="Day Info" FontSize="32" />
+        <StackPanel Background="#45465c" Grid.Column="1" Name="infoPanel" Width="450">
+            <Label Content="Person Info" Foreground="White" FontSize="32" FontFamily="Segoe UI" FontWeight="Medium" Margin="10, 7, 0, 0"/>
+            <Label x:Name="dayLabel" Content="Dag: 1" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <Label Content="Navn: Josefine Andersen" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <Label Content="Alder: 27" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
         </StackPanel>
     </Grid>
 </Window>

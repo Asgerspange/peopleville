@@ -58,11 +58,14 @@ namespace VillageView
                     itemGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                     itemGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
+                    var primaryForegroundColor = new SolidColorBrush(Colors.White);
+                    var primaryFontFamily = new FontFamily("Segoe UI");
+
                     Image image = new Image();
                     if (villager.IsMale)
                     {
                         image.Source = villager.IsWhite
-                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleWhiteVillager.jpg"))
+                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/asd.jpg"))
                             : new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleBlackVillager.jpg"));
                     }
                     else
@@ -86,15 +89,16 @@ namespace VillageView
                     Button button = new Button
                     {
                         Content = itemGrid,
-                        Margin = new Thickness(5)
+                        Margin = new Thickness(5),
                     };
                     button.Click += (sender, e) =>
                     {
                         infoPanel.Children.Clear();
-                        infoPanel.Children.Add(new Label { Content = "Info Panel", FontSize = 32 });
-                        infoPanel.Children.Add(new Label { Content = $"Dag: {village.Time.ToString()}", FontSize = 16 });
-                        infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16 });
-                        infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16 });
+                        infoPanel.Children.Add(new Label { Content = "Person Info", FontSize = 32, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, FontWeight = FontWeights.Medium, Margin = new Thickness(10, 7, 0, 0) });
+                        infoPanel.Children.Add(new Label { Content = $"Dag: {village.Time.ToString()}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+                        infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+                        infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+                        infoPanel.Children.Add(new Label { Content = $"Penge: {villager.PersonalWallet.Money}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                     };
 
                     Grid.SetColumn(button, col);
