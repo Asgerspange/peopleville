@@ -25,9 +25,11 @@ namespace PeopleVilleEngine
 
         private void LoadHobbiesFromJsonFile()
         {
-            string jsonFile = "lib\\hobbies.json";
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string jsonFile = Path.Combine(baseDirectory, "lib", "hobbies.json");
+
             if (!File.Exists(jsonFile))
-                throw new FileNotFoundException(jsonFile);
+                throw new FileNotFoundException($"JSON file not found: {jsonFile}");
 
             string jsonData = File.ReadAllText(jsonFile);
             var hobbiesData = JsonSerializer.Deserialize<HobbiesData>(jsonData);

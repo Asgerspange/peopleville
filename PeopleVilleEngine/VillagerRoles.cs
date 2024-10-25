@@ -22,8 +22,9 @@ public class VillagerRoles
 
     private void LoadNamesFromJsonFile()
     {
-        string jsonFile = "lib\\roles.json";
-        Console.Write(jsonFile);
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        string jsonFile = Path.Combine(baseDirectory, "lib", "roles.json");
+
         if (!File.Exists(jsonFile))
         {
             throw new FileNotFoundException($"JSON file not found: {jsonFile}");
