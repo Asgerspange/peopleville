@@ -10,13 +10,11 @@ namespace PeopleVilleEngine
 
         public event Action NewDayStarted;
 
-
         public string UpdateDay()
         {
             dayCount++;
             Day = $"Day {dayCount}";
             OnNewDayStarted();
-
             return this.ToString();
         }
 
