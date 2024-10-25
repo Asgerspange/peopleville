@@ -39,7 +39,7 @@ namespace PeopleVilleEngine
         public string GetRandomHobby()
         {
             if (_hobbies.Length == 0)
-                throw new IndexOutOfRangeException("Hobbies data not properly loaded.");
+                throw new IndexOutOfRangeException("Hobby data er ikke loaded korrekt.");
 
             int index = RNG.GetInstance().Next(_hobbies.Length);
             return _hobbies[index];
