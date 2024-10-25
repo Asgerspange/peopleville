@@ -16,7 +16,7 @@ public class Village
 
     public Village()
     {
-        Console.WriteLine("Creating villager");
+        Console.WriteLine("Laver Landsby");
         CreateVillage();
     }
 
@@ -72,13 +72,13 @@ public class Village
         var createrTypes = inputTypes.Where(p => createVillagerInterface.IsAssignableFrom(p) && !p.IsInterface).ToList();
         foreach (var type in createrTypes)
         {
-            Console.WriteLine($"Village Creeater loaded: {type}");
+            Console.WriteLine($"Landsby Creator loaded: {type}");
             outputVillagerCreators.Add((IVillagerCreator)Activator.CreateInstance(type));
         } 
     }
 
     public override string ToString()
     {
-        return $"Village have {Villagers.Count} villagers, where {Villagers.Count(v => v.HasHome() == false)} are homeless.";
+        return $"Landsby har {Villagers.Count} beboere, hvor {Villagers.Count(v => v.HasHome() == false)} er hjemløse.";
     }
 }
