@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PeopleVilleEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d22ff3811a2d860e5f8182b9313549bdf6160535")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+752171530afb7533f5852f2ed8171467d037812e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PeopleVilleEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PeopleVilleEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

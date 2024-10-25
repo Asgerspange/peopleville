@@ -65,7 +65,7 @@ namespace VillageView
                     if (villager.IsMale)
                     {
                         image.Source = villager.IsWhite
-                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/asd.jpg"))
+                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/hatman.jpg"))
                             : new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleBlackVillager.jpg"));
                     }
                     else
@@ -99,6 +99,8 @@ namespace VillageView
                         infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Penge: {villager.PersonalWallet.Money}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+                        infoPanel.Children.Add(new Label { Content = $"Job: {villager.Role}", FontSize=16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+
                     };
 
                     Grid.SetColumn(button, col);

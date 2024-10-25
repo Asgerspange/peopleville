@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVille\\PeopleVille.csproj": {}
+    "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVille\\PeopleVille.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+    "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
+        "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
         "projectName": "PeopleVilleEngine",
-        "projectPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
+        "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj",
         "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\obj\\",
+        "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVille\\PeopleVille.csproj": {
+    "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVille\\PeopleVille.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVille\\PeopleVille.csproj",
+        "projectUniqueName": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVille\\PeopleVille.csproj",
         "projectName": "PeopleVille",
-        "projectPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVille\\PeopleVille.csproj",
+        "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVille\\PeopleVille.csproj",
         "packagesPath": "C:\\Users\\HFGF\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVille\\obj\\",
+        "outputPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVille\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HFGF\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
-                "projectPath": "C:\\Users\\HFGF\\Documents\\GitHub\\peopleville\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
+              "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj": {
+                "projectPath": "C:\\Users\\HFGF\\Downloads\\PeopleVille2023\\PeopleVille2023\\PeopleVilleEngine\\PeopleVilleEngine.csproj"
               }
             }
           }
