@@ -8,13 +8,16 @@ namespace PeopleVilleEngine.Locations.Buildings.Bank
         private Dictionary<int, BankAccount> accounts = new Dictionary<int, BankAccount>();
         private int nextAccountNumber = 1;
 
-        public int CreateAccount(string accountHolder)
+        public int CreateAccount(string accountHolder, string role)
         {
+            var villagerRoles = VillagerRoles.GetInstance();
+            decimal startAmount = villagerRoles.GetRoleStartAmount(role);
+
             var account = new BankAccount
             {
                 AccountNumber = nextAccountNumber++,
                 AccountHolder = accountHolder,
-                Balance = 0.0m
+                Balance = startAmount
             };
             accounts[account.AccountNumber] = account;
             return account.AccountNumber;
