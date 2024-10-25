@@ -1,11 +1,17 @@
 ﻿using PeopleVilleEngine;
 Console.WriteLine("PeopleVille");
 
-//Create village
 var village = new Village();
+var EventManager = new EventManager(village);
+
 while (true)
 {
     Console.Clear();
+    var events = EventManager.ExecuteEvents();
+    foreach (var evemt in events) {
+        Console.WriteLine($"{evemt.Description}");
+    }
+
     Console.WriteLine(village.ToString());
     Console.WriteLine(village.Time);
     foreach (var location in village.Locations)
