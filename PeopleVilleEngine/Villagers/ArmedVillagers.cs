@@ -1,34 +1,24 @@
 ﻿using PeopleVilleEngine;
-using PeopleVilleEngine.Locations;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
 
-// Definerer interface IArmed
 public interface IArmed
 {
     string Weapon { get; }
     string WeaponDescription { get; }
-    void LoadWeaponsFromJsonFile();
+    void LoadWeaponsFromJsonFile(string jsonFile);
 }
 
 public class ArmedVillager : BaseVillager, IArmed
 {
     public string Weapon { get; private set; }
     public string WeaponDescription { get; private set; }
-    private static List<(string Name, string Description)> Weapons = new List<(string, string)>
-    {
-        ("Bat", "Et bat af træ"),
-        ("Uzi", "Et kompakt maskinegevær"),
-        ("Hammer", "Ganske almindelig hammer"),
-        ("Kniv", "Skarp og lille"),
-        ("Morgenstjerne", "Solid jernkugle med skaft og kæde"),
-        ("Knojern", "Lavet af jern"),
-        ("Pisk", "Lavet af læder")
-    };
+    private static List<(string Name, string Description)> _weapons;
 
-    private static List<(string Name, string Description)> _weapons = Weapons;
+    static ArmedVillager()
+    {
+        var instance = new ArmedVillager(new Village());
+        instance.LoadWeaponsFromJsonFile("lib\\weaponDescription.json");
+    }
 
     public ArmedVillager(Village village) : base(village)
     {
@@ -38,17 +28,20 @@ public class ArmedVillager : BaseVillager, IArmed
     }
 
     // Indlæser Weapondata fra en JSON-fil
-    public void LoadWeaponsFromJsonFile()
+    public void LoadWeaponsFromJsonFile(string jsonFile)
     {
-        string jsonFile = "lib\\weapons.json";
         if (!File.Exists(jsonFile))
             throw new FileNotFoundException(jsonFile);
-         
+
         string jsonData = File.ReadAllText(jsonFile);
         var weaponsData = JsonSerializer.Deserialize<List<(string Name, string Description)>>(jsonData);
         if (weaponsData != null)
         {
             _weapons = weaponsData;
+        }
+        else
+        {
+            _weapons = new List<(string Name, string Description)>();
         }
     }
 
