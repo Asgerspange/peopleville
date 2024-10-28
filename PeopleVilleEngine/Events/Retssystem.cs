@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using PeopleVilleEngine.Locations.Buildings.Prison;
 
 namespace PeopleVilleEngine.Events
 {
@@ -12,10 +13,12 @@ namespace PeopleVilleEngine.Events
         private const int ChanceForFreedom = 30;
         private const int ChanceForJail = 70;
         private List<Forbrydelse> _forbrydelser;
+        private Prison _prison;
 
         public Retssystem()
         {
             _random = RNG.GetInstance();
+            _prison = new Prison();
             LoadForbrydelserFromJsonFile();
         }
 
@@ -26,8 +29,10 @@ namespace PeopleVilleEngine.Events
             _forbrydelser = forbrydelseData.ForbrydelsesTyper;
         }
 
-        public Event GenerateTrialEvent(string villagerName)
+        public Event GenerateTrialEvent(string villagerName, int villagerAge)
         {
+            if (villagerAge < 18)
+                throw new ArgumentException("Kun personer over 18 år kan blive dømt i retssystemet.");
             string rolle = "Kriminel";
             if (rolle != "Kriminel")
                 throw new ArgumentException("Kun kriminielle kan blive dømt i retssystemet.");
@@ -45,6 +50,7 @@ namespace PeopleVilleEngine.Events
             else
             {
                 var forbrydelse = GetRandomForbrydelse();
+                TransferToPrison(villagerName, villagerAge, forbrydelse.Navn, forbrydelse.StrafAar);
                 return new Event
                 {
                     Title = $"{villagerName} {forbrydelse.StrafAar} års fængsel",
@@ -58,6 +64,14 @@ namespace PeopleVilleEngine.Events
         {
             int index = _random.Next(_forbrydelser.Count);
             return _forbrydelser[index];
+        }
+
+        private void TransferToPrison(string villagerName, int villagerAge, string crime, int years)
+        {
+            _prison.RegisterInmate(villagerName, villagerAge, crime);
+            var inmate = _prison.GetInmates().Last(); // Get the last registered inmate
+            _prison.AssignCell(inmate.Id, _random.Next(1, 100)); // Assign a random cell number between 1 and 100
+            Console.WriteLine($"{villagerName} er forflyttet til fængsel for {years} år.");
         }
     }
 
@@ -79,12 +93,6 @@ namespace PeopleVilleEngine.Events
         public string Severity { get; set; }
     }
 }
-
-/* Kald dette fra Program.cs/EventManager
-var retssystem = new Retssystem();
-var event = retssystem.GenerateTrialEvent("Lars Jensen");
-
-// Output event properties
-Console.WriteLine($"Title: {event.Title}");
-Console.WriteLine($"Description: {event.Description}");
-Console.WriteLine($"Severity: {event.Severity}");*/
+/*var retssystem = new Retssystem();
+var event = retssystem.GenerateTrialEvent("Lars Jensen", 25); //Kriminelle skal namedroppes
+*/
