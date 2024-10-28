@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -70,9 +70,10 @@ namespace PeopleVilleEngine.Events
         private void TransferToPrison(string villagerName, int villagerAge, string crime, int years)
         {
             _prison.RegisterInmate(villagerName, villagerAge, crime);
-            var inmate = _prison.GetInmates().Last(); // Get the last registered inmate
-            _prison.AssignCell(inmate.Id, _random.Next(1, 100)); // Assign a random cell number between 1 and 100
+            var inmate = _prison.GetInmates().Last(); 
+            _prison.AssignCell(inmate.Id, _random.Next(1, 100)); 
             Console.WriteLine($"{villagerName} er forflyttet til fængsel for {years} år.");
+
         }
     }
 

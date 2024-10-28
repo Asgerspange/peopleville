@@ -12,7 +12,7 @@ public interface IItem
     //konverterer objekt til streng med weapondescription
     string ToString(bool includeWeaponDescription, string weaponDescription = "");
 }
- 
+
 public class Item : IItem
 {
     public string Name { get; set; }
@@ -53,5 +53,27 @@ public class Weapon : Item
     public override string ToString()
     {
         return $"{Name}: {Description} - Type: {WeaponType}";
+    }
+}
+
+// Nedarver fra Item klassen
+public class ChildrenToys : Item
+{
+    private static List<ChildrenToys> toyList;
+
+    public ChildrenToys(string name, string description)
+        : base(name, description)
+    {
+    }
+
+    public static void LoadToysFromJsonFile()
+    {
+        // Implement logic to load toys from a JSON file
+    }
+
+    public static ChildrenToys GetRandomToy()
+    {
+        var random = new Random();
+        return toyList[random.Next(toyList.Count)];
     }
 }

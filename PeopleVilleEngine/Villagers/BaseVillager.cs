@@ -32,6 +32,7 @@ public abstract class BaseVillager
         {
             Role = village.VillagerRoleLibrary.GetRandomRole();
             AssignRandomPet();
+            ArmedVillager.AssignWeaponToVillager(this); // Assign weapon if over 18
         }
         Hobby = village.VillagerHobbyLibrary.GetRandomHobby();
         PersonalWallet = new Wallet("$", 100m);
@@ -60,7 +61,6 @@ public abstract class BaseVillager
             Pet = new Pet(petName, fallbackPetType, 1, _village);
         }
     }
-
 
     public void CheckPetAge()
     {

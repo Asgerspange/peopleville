@@ -25,6 +25,7 @@ public class ArmedVillager : BaseVillager, IArmed
         var weapon = AssignRandomWeapon();
         Weapon = weapon.Name;
         WeaponDescription = weapon.Description;
+        AddWeaponToInventory(weapon);
     }
 
     // Indlæser Weapondata fra en JSON-fil
@@ -60,6 +61,21 @@ public class ArmedVillager : BaseVillager, IArmed
             Console.WriteLine($"Fejl ved tildeling af tilfældigt våben: {ex.Message}");
             return _weapons[0]; // Returnerer det første våben i listen som standard
         }
+    }
+
+    // Adds the weapon to the villager's inventory
+    private void AddWeaponToInventory((string Name, string Description) weapon)
+    {
+        var weaponItem = new Item(weapon.Name, weapon.Description);
+        AddItem(weaponItem);
+    }
+
+    // Assigns a random weapon to any villager
+    public static void AssignWeaponToVillager(BaseVillager villager)
+    {
+        var weapon = _weapons[RNG.GetInstance().Next(_weapons.Count)];
+        var weaponItem = new Item(weapon.Name, weapon.Description);
+        villager.AddItem(weaponItem);
     }
 
     public override string ToString()

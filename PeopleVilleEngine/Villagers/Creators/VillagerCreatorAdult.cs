@@ -6,7 +6,7 @@ public class VillagerCreatorAdult : IVillagerCreator
     {
         var random = RNG.GetInstance();
         var adult = new AdultVillager(village, random.Next(18, 40));
-        //Find house
+        // Find house
         var home = FindHome(village);
 
         if (home.Villagers().Count(v => v.GetType() == typeof(AdultVillager)) >= 1)
@@ -21,7 +21,10 @@ public class VillagerCreatorAdult : IVillagerCreator
         home.Villagers().Add(adult);
         adult.Home = home;
 
-        //Add to village
+        // Assign a weapon to the adult
+        AssignWeaponToAdult(adult);
+
+        // Add to village
         village.Villagers.Add(adult);
         return true;
     }
@@ -34,13 +37,20 @@ public class VillagerCreatorAdult : IVillagerCreator
             .Where(p => p.Villagers().Count(v => v.GetType() == typeof(AdultVillager)) < 2)
             .Where(p => ((IHouse)p).Population < ((IHouse)p).MaxPopulation).ToList();
 
-        if (potentialHomes.Count > 0 && random.Next(1, 5) != 1) //Return current house
+        if (potentialHomes.Count > 0 && random.Next(1, 5) != 1) // Return current house
             return (IHouse)potentialHomes[random.Next(0, potentialHomes.Count)];
 
-        //create a new house
+        // Create a new house
         IHouse house = new SimpleHouse();
         village.Locations.Add(house);
         return house;
+    }
 
+    private void AssignWeaponToAdult(BaseVillager adult)
+    {
+        if (adult.Age >= 18)
+        {
+            ArmedVillager.AssignWeaponToVillager(adult);
+        }
     }
 }
