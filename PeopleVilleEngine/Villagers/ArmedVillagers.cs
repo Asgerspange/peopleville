@@ -3,15 +3,11 @@ using System.Text.Json;
 
 public interface IArmed
 {
-    string Weapon { get; }
-    string WeaponDescription { get; }
     void LoadWeaponsFromJsonFile(string jsonFile);
 }
 
 public class ArmedVillager : BaseVillager, IArmed
 {
-    public string Weapon { get; private set; }
-    public string WeaponDescription { get; private set; }
     private static List<(string Name, string Description)> _weapons;
 
     static ArmedVillager()
@@ -23,11 +19,9 @@ public class ArmedVillager : BaseVillager, IArmed
     public ArmedVillager(Village village) : base(village)
     {
         var weapon = AssignRandomWeapon();
-        Weapon = weapon.Name;
-        WeaponDescription = weapon.Description;
+        AddItem(weapon); // Tilføjer våbnet til Inventory
     }
 
-    // Indlæser Weapondata fra en JSON-fil
     public void LoadWeaponsFromJsonFile(string jsonFile)
     {
         if (!File.Exists(jsonFile))
@@ -45,25 +39,27 @@ public class ArmedVillager : BaseVillager, IArmed
         }
     }
 
-    // Constructor kalder base-klassen "Villager", "Weapon" initialisereres ved at kalde metoden "AssignRandomWeapon"
-    private (string Name, string Description) AssignRandomWeapon()
+    private Weapon AssignRandomWeapon()
     {
         try
         {
             var rng = RNG.GetInstance();
             int index = rng.Next(_weapons.Count);
-            return _weapons[index];
+            var weaponData = _weapons[index];
+            return new Weapon(weaponData.Name, weaponData.Description, "DefaultType"); 
         }
         catch (Exception ex)
         {
-            // Error Handling: Logger undtagelsen og returnerer et "standard våben"
             Console.WriteLine($"Fejl ved tildeling af tilfældigt våben: {ex.Message}");
-            return _weapons[0]; // Returnerer det første våben i listen som standard
+            var defaultWeaponData = _weapons[0];
+            return new Weapon(defaultWeaponData.Name, defaultWeaponData.Description, "DefaultType"); // 
         }
     }
 
+
     public override string ToString()
     {
-        return $"{base.ToString()} - Bevæbnet med: {Weapon} ({WeaponDescription})";
+        var inventoryItems = string.Join(", ", Inventory.Select(i => i.ToString()));
+        return $"{base.ToString()} - Inventar: {inventoryItems}";
     }
 }

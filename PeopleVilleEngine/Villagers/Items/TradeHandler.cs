@@ -1,6 +1,7 @@
 ﻿using PeopleVilleEngine.Villagers;
 using PeopleVilleEngine.Villagers.Items;
 using System;
+using System.Linq;
 
 public static class TradeHandler
 {
@@ -13,19 +14,27 @@ public static class TradeHandler
         }
         else
         {
-            throw new InvalidOperationException($"{villager1.FirstName} {villager1.LastName} Har ikke nok penge.");
+            throw new InvalidOperationException($"{villager1.FirstName} {villager1.LastName} har ikke nok penge.");
         }
     }
-     
+
     public static void TradeWeapon(ArmedVillager villager1, ArmedVillager villager2)
     {
-        var weaponProperty = typeof(ArmedVillager).GetProperty("Weapon", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var weapon1 = villager1.Inventory.OfType<Weapon>().FirstOrDefault();
+        var weapon2 = villager2.Inventory.OfType<Weapon>().FirstOrDefault();
 
-        string tempWeapon = villager1.Weapon;
-        weaponProperty.SetValue(villager1, villager2.Weapon);
-        weaponProperty.SetValue(villager2, tempWeapon);
+        if (weapon1 == null || weapon2 == null)
+        {
+            throw new InvalidOperationException("En af villagers har ikke et våben i deres inventar.");
+        }
 
-        Console.WriteLine($"{villager1.FirstName} {villager1.LastName} Byttede våben med {villager2.FirstName} {villager2.LastName}. {villager1.FirstName} har nu {villager1.Weapon} og {villager2.FirstName} har nu {villager2.Weapon}.");
+        villager1.Inventory.Remove(weapon1);
+        villager2.Inventory.Remove(weapon2);
+
+        villager1.AddItem(weapon2);
+        villager2.AddItem(weapon1);
+
+        Console.WriteLine($"{villager1.FirstName} {villager1.LastName} byttede våben med {villager2.FirstName} {villager2.LastName}. {villager1.FirstName} har nu {weapon2.Name}, og {villager2.FirstName} har nu {weapon1.Name}.");
     }
 
     public static void TradeToy(ChildVillager child1, ChildVillager child2, ChildrenToys toy1, ChildrenToys toy2)

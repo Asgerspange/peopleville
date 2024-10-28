@@ -33,7 +33,6 @@ namespace PeopleVilleEngine.Events
         {
             if (villagerAge < 18)
                 throw new ArgumentException("Kun personer over 18 år kan blive dømt i retssystemet.");
-
             string rolle = "Kriminel";
             if (rolle != "Kriminel")
                 throw new ArgumentException("Kun kriminielle kan blive dømt i retssystemet.");
