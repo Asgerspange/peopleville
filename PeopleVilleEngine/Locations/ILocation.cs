@@ -1,6 +1,4 @@
-﻿using PeopleVilleEngine.Locations.Buildings;
-
-namespace PeopleVilleEngine.Locations;
+﻿namespace PeopleVilleEngine.Locations;
 public interface ILocation
 {
     string Name { get; }

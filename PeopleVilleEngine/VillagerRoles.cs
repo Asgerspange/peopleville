@@ -1,5 +1,4 @@
-﻿using PeopleVilleEngine;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace PeopleVilleEngine
 {
@@ -65,7 +64,7 @@ namespace PeopleVilleEngine
 
         private class RoleData
         {
-            public string Role { get; set; } = string.Empty;
+            public string Role { get; set; }
             public int Weight { get; set; }
             public decimal PaymentAmount { get; set; }
             public decimal StartAmount { get; set; }
