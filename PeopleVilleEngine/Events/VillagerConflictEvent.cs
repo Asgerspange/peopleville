@@ -13,8 +13,8 @@ namespace PeopleVilleEngine
         public List<EventDetails> Execute(Village village)
         {
             var executedEvents = new List<EventDetails>();
-            var victim = village.Villagers.FirstOrDefault(v => v.IsWhite);
-            var attacker = village.Villagers.FirstOrDefault(v => !v.IsWhite && v != victim);
+            var attacker = village.Villagers.FirstOrDefault(v => v.Role == "Kriminel");
+            var victim = village.Villagers.FirstOrDefault(v => v != attacker);
 
             if (victim != null && attacker != null)
             {
