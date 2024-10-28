@@ -1,24 +1,43 @@
 ﻿namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
 {
-    public class SuperMarket
+    public class SuperMarketLocation : ILocation
+    {
+        public string Name { get; set; } 
+
+        public List<BaseVillager> Villagers() 
+        {
+            return new List<BaseVillager>();
+        }
+    }
+
+    public class SuperMarket : ILocation
     {
         private Dictionary<string, Food> inventory = new Dictionary<string, Food>();
         private List<SuperMarketLocation> locations = new List<SuperMarketLocation>();
 
-        public void AddFoodItem(string name, decimal price, int quantity)
+        public string Name { get; set; }
+
+        public SuperMarket()
         {
-            if (inventory.ContainsKey(name))
+            AddFoodItem(new Apples());
+            AddFoodItem(new Oranges());
+            AddFoodItem(new Bananas());
+        }
+
+        public List<BaseVillager> Villagers() 
+        {
+            return new List<BaseVillager>();
+        }
+
+        public void AddFoodItem(Food food)
+        {
+            if (inventory.ContainsKey(food.Name))
             {
-                inventory[name].Quantity += quantity;
+                inventory[food.Name].Quantity += food.Quantity;
             }
             else
             {
-                inventory[name] = new Food
-                {
-                    Name = name,
-                    Price = price,
-                    Quantity = quantity
-                };
+                inventory[food.Name] = food;
             }
         }
 
@@ -45,16 +64,9 @@
             return new List<Food>(inventory.Values);
         }
 
-        public void AddLocation(string address)
+        public void AddLocation(string name)
         {
-            locations.Add(new SuperMarketLocation { Address = address });
-        }
-
-        // should get location from Locations folder
-        public class SuperMarketLocation
-        {
-            public string Address { get; set; }
+            locations.Add(new SuperMarketLocation { Name = name });
         }
     }
 }
-

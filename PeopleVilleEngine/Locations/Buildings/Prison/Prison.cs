@@ -1,9 +1,16 @@
 ﻿namespace PeopleVilleEngine.Locations.Buildings.Prison
 {
-    public class Prison
+    public class Prison : ILocation
     {
         private List<Inmate> inmates = new List<Inmate>();
         private Dictionary<int, List<Inmate>> cells = new Dictionary<int, List<Inmate>>();
+
+        public string Name { get; private set; }
+
+        public Prison(string name)
+        {
+            Name = name;
+        }
 
         public void RegisterInmate(string name, int age, string crime)
         {
@@ -40,6 +47,12 @@
         public void RecordIncident(string description)
         {
             Console.WriteLine($"Security incident recorded: {description}");
+        }
+
+        public List<BaseVillager> Villagers()
+        {
+            // Implementation for Villagers method
+            return new List<BaseVillager>();
         }
     }
 }

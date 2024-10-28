@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PeopleVilleEngine.Locations.Buildings.Houses
+﻿namespace PeopleVilleEngine.Locations;
+public class House : IHouse
 {
-    public class House
+    public House()
     {
-        public Guid Id { get; set; }
-        public string Address { get; set; }
-        public string Owner { get; set; }
-        public int NumberOfRooms { get; set; }
-        public List<Resident> Residents { get; set; }
+        var random = RNG.GetInstance();
+        MaxPopulation = random.Next(1, 5);
     }
+    private readonly List<BaseVillager> _villagers = new();
+    public string Name => $"House, with a population of {Population}.";
+
+    public List<BaseVillager> Villagers()
+    {
+        return _villagers;
+    }
+
+    public int Population => _villagers.Count;
+    public int MaxPopulation { get; set; }
 }
