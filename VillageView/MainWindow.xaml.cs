@@ -28,7 +28,6 @@ namespace VillageView
                 // Create a StackPanel for each housing group
                 StackPanel housingPanel = new StackPanel
                 {
-                    Margin = new Thickness(10),
                     Orientation = Orientation.Vertical,
                     Background = new SolidColorBrush(Color.FromRgb(45, 48, 71))
                 };
@@ -122,6 +121,7 @@ namespace VillageView
                     BorderThickness = new Thickness(5),
                     BorderBrush = new SolidColorBrush(Color.FromRgb(69, 70, 92)),
                     CornerRadius = new CornerRadius(5),
+                    Margin = new Thickness(0, 0, 0, 10),
                     Child = housingPanel
                 };
 
