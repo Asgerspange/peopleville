@@ -12,7 +12,7 @@ namespace VillageView
     public partial class MainWindow : Window
     {
         private static Village village = new Village();
-        private PeopleVilleEngine.EventManager eventManager = new PeopleVilleEngine.EventManager(village);
+        private PeopleVilleEngine.EventManager eventManager = new PeopleVilleEngine.EventManager(ref village);
 
         Random random = new Random();
 
@@ -21,11 +21,39 @@ namespace VillageView
             InitializeComponent();
             village.Time.NewDayStarted += UpdateDayDisplay;
 
+            RefreshVillagersUI();
+
+            this.PreviewKeyUp += MainWindow_PreviewKeyUp;
+        }
+
+        private void MainWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Q)
+            {
+                village.Time.UpdateDay();
+            }
+        }
+
+        private void UpdateDayDisplay()
+        {
+            dayLabel.Content = village.Time.ToString();
+
+            var gameEvents = eventManager.ExecuteEvents();
+            foreach (var gameEvent in gameEvents)
+            {
+                eventLabel.Content = gameEvent.Description;
+                EventPopup popup = new EventPopup(gameEvent.Title, gameEvent.Description);
+                popup.ShowDialog();
+            }
+
+            RefreshVillagersUI();
+        }
+
+        private void RefreshVillagersUI()
+        {
+            mainPanel.Children.Clear(); // Clear the existing UI elements
             foreach (var location in village.Locations)
             {
-
-
-                // Create a StackPanel for each housing group
                 StackPanel housingPanel = new StackPanel
                 {
                     Margin = new Thickness(10),
@@ -33,13 +61,11 @@ namespace VillageView
                     Background = new SolidColorBrush(Color.FromRgb(45, 48, 71))
                 };
 
-                // Get the distinct last names of all villagers in this location
                 var lastNames = location.Villagers()
                     .Select(v => v.LastName)
                     .Distinct()
                     .ToList();
 
-                // Concatenate the last names and add "House" to form the location label
                 string locationLabelText = string.Join(", ", lastNames) + "s Hus";
 
                 Label locationLabel = new Label
@@ -127,29 +153,7 @@ namespace VillageView
 
                 mainPanel.Children.Add(housingBorder);
             }
-
-            this.PreviewKeyUp += MainWindow_PreviewKeyUp;
         }
 
-        private void MainWindow_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Q)
-            {
-                village.Time.UpdateDay();
-            }
-        }
-
-        private void UpdateDayDisplay()
-        {
-            dayLabel.Content = village.Time.ToString();
-
-            var gameEvents = eventManager.ExecuteEvents();
-            foreach (var gameEvent in gameEvents)
-            {
-                eventLabel.Content = gameEvent.Description;
-                EventPopup popup = new EventPopup(gameEvent.Title, gameEvent.Description);
-                popup.ShowDialog();
-            }
-        }
     }
 }
