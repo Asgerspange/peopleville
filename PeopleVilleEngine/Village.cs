@@ -20,7 +20,6 @@ public class Village
         CreateVillage();
     }
 
-
     private void CreateVillage()
     {
         var villagers = _random.Next(10, 24);
