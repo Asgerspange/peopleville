@@ -12,7 +12,7 @@ namespace PeopleVilleEngine.Events
         public EventSeverityLevel EventSeverity { get; set; }
         public string Title { get; set; } = "A robbery occurred.";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var executedEvents = new List<EventDetails>();
             var villagers = village.Villagers.OrderBy(v => Guid.NewGuid()).Take(2).ToList();

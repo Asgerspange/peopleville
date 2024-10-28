@@ -12,7 +12,7 @@ namespace PeopleVilleEngine.Events
         public EventSeverityLevel EventSeverity { get; set; }
         public string Title { get; set; } = "A natural disaster has struck the village!";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var eventDetails = new List<EventDetails>();
 
