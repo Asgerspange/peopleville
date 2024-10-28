@@ -28,7 +28,6 @@ public abstract class BaseVillager
     {
         return $"{FirstName} {LastName} is {Hobby}.";
     }
-
     public override string ToString()
     {
         return $"{FirstName} {LastName} ({Age} years) - Job: {Role} - Hobby: {Hobby}";

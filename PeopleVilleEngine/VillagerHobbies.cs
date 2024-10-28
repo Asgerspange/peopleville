@@ -44,41 +44,11 @@ namespace PeopleVilleEngine
             int index = RNG.GetInstance().Next(_hobbies.Length);
             return _hobbies[index];
         }
-
-        public string GetRandomHobbyForVillager() => GetRandomHobby();
-
-        // Method to add villagers to the list
-        public void AddVillager(BaseVillager villager)
+        public void PerformVillagerHobbies(IEnumerable<BaseVillager> villagers)
         {
-            _villagers.Add(villager);
-        }
-
-        // Method to detect "L" key press and trigger villagers' hobbies
-        public void DetectKeyPressAndPerformHobbies()
-        {
-            Console.WriteLine("Press 'L' to make all villagers perform their hobbies...");
-
-            while (true) // Infinite loop to constantly check for key presses
+            foreach (var villager in villagers)
             {
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey(true).Key;
-
-                    if (key == ConsoleKey.L) // If 'L' key is pressed
-                    {
-                        PerformVillagerHobbies();
-                    }
-                }
-            }
-        }
-
-        // Method to perform hobbies for all villagers and print the result
-        private void PerformVillagerHobbies()
-        {
-            foreach (var villager in _villagers)
-            {
-                string hobbyMessage = villager.PerformHobby();
-                Console.WriteLine(hobbyMessage);
+                Console.WriteLine(villager.PerformHobby());
             }
         }
 

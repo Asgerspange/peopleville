@@ -76,6 +76,45 @@ public class Village
         }
     }
 
+    public static void printMenu()
+    {
+        Console.WriteLine("Menu:");
+        Console.WriteLine("1. Do your Hobby's");
+        Console.WriteLine("5. Exit");
+    }
+
+    public void RunMenu(IEnumerable<BaseVillager> villagers)
+    {
+        bool exit = false;
+
+        while (!exit)
+        {
+            printMenu();
+            Console.Write("Select an option: ");
+            var key = Console.ReadKey(true).KeyChar;
+
+            switch (key)
+            {
+                case '1':
+                    VillagerHobbyLibrary.PerformVillagerHobbies(villagers);
+                    break;
+                case '2':
+                    break;
+                case '3':
+                    break;
+                case '4':
+                    break;
+                case '5':
+                    exit = true;
+                    Console.WriteLine("Exiting...");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Please select a valid option.");
+                    break;
+            }
+        }
+    }
+
     public override string ToString()
     {
         return $"Village have {Villagers.Count} villagers, where {Villagers.Count(v => v.HasHome() == false)} are homeless.";
