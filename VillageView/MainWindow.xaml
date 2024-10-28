@@ -48,6 +48,7 @@
         <StackPanel Background="#45465c" Grid.Column="1" Name="infoPanel" Width="450">
             <Label Content="Person Info" Foreground="White" FontSize="32" FontFamily="Segoe UI" FontWeight="Medium" Margin="10, 7, 0, 0"/>
             <Label x:Name="dayLabel" Content="Dag: 1" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <Label x:Name="eventLabel" Content="Event" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0" />
             <Label Content="Navn: Josefine Andersen" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
             <Label Content="Alder: 27" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
         </StackPanel>
