@@ -1,18 +1,15 @@
+// IItem Interface
 public interface IItem
 {
-    // Interface metode til at få navn
     string Name { get; set; }
-
-    // Interface metode til at få beskrivelse
     string Description { get; set; }
 
-    //konverterer objektet til en streng
+    // Metoder til at konvertere objekt til string
     string ToString();
-
-    //konverterer objekt til streng med weapondescription
     string ToString(bool includeWeaponDescription, string weaponDescription = "");
 }
- 
+
+// Item-klassen implementerer IItem
 public class Item : IItem
 {
     public string Name { get; set; }
@@ -39,7 +36,7 @@ public class Item : IItem
     }
 }
 
-// Nedarver fra Item klassen
+// Weapon-klassen arver fra Item
 public class Weapon : Item
 {
     public string WeaponType { get; set; }
