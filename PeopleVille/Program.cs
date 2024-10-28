@@ -2,7 +2,7 @@
 Console.WriteLine("PeopleVille");
 
 var village = new Village();
-var EventManager = new EventManager(village);
+var EventManager = new EventManager(ref village);
 
 while (true)
 {

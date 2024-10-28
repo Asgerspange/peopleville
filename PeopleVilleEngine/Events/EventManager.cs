@@ -6,9 +6,9 @@ namespace PeopleVilleEngine
 {
     public class EventManager
     {
-        private readonly Village _village;
+        private Village _village;
 
-        public EventManager(Village village)
+        public EventManager(ref Village village)
         {
             _village = village;
         }
@@ -22,7 +22,7 @@ namespace PeopleVilleEngine
 
             foreach (var gameEvent in events)
             {
-                var executedEvents = gameEvent.Execute(_village);
+                var executedEvents = gameEvent.Execute(ref _village);
                 allExecutedEvents.AddRange(executedEvents);
             }
 
