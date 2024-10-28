@@ -51,6 +51,9 @@
             <Label x:Name="eventLabel" Content="Event" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0" />
             <Label Content="Navn: Josefine Andersen" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
             <Label Content="Alder: 27" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <StackPanel x:Name="inventoryPanel" Margin="10">
+                
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
