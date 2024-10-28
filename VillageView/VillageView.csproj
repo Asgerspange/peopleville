@@ -12,6 +12,8 @@
     <None Remove="Images\asd.jpg" />
     <None Remove="Images\FemaleBlackVillager.jpg" />
     <None Remove="Images\FemaleWhiteVillager.jpg" />
+    <None Remove="Images\Female\Baby\Black1.png" />
+    <None Remove="Images\Female\Baby\White1.png" />
     <None Remove="Images\Female\Black1.png" />
     <None Remove="Images\Female\Black2.png" />
     <None Remove="Images\Female\Black3.png" />
@@ -21,6 +23,8 @@
     <None Remove="Images\hatman.jpg" />
     <None Remove="Images\MaleBlackVillager.jpg" />
     <None Remove="Images\MaleWhiteVillager.jpg" />
+    <None Remove="Images\Male\Baby\Black1.png" />
+    <None Remove="Images\Male\Baby\White1.png" />
     <None Remove="Images\Male\Black1.png" />
     <None Remove="Images\Male\Black2.png" />
     <None Remove="Images\Male\Black3.png" />
@@ -38,12 +42,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Female\Baby\Black1.png" />
+    <Resource Include="Images\Female\Baby\White1.png" />
     <Resource Include="Images\Female\Black1.png" />
     <Resource Include="Images\Female\Black2.png" />
     <Resource Include="Images\Female\Black3.png" />
     <Resource Include="Images\Female\White1.png" />
     <Resource Include="Images\Female\White2.png" />
     <Resource Include="Images\Female\White3.png" />
+    <Resource Include="Images\Male\Baby\Black1.png" />
+    <Resource Include="Images\Male\Baby\White1.png" />
     <Resource Include="Images\Male\Black1.png" />
     <Resource Include="Images\Male\Black2.png" />
     <Resource Include="Images\Male\Black3.png" />

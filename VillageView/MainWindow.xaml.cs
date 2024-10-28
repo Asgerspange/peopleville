@@ -87,9 +87,11 @@ namespace VillageView
                 {
                     string genderPath = villager.IsMale ? "Male" : "Female";
                     string colorPrefix = villager.IsWhite ? "White" : "Black";
-                    int randomNumber = random.Next(1, villager.IsMale ? 5 : 4);
+                    string agePath = villager.Age < 18 ? "Baby/" : "";
 
-                    string imagePath = $"/Images/{genderPath}/{colorPrefix}{randomNumber}.png";
+                    int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
+
+                    string imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
 
                     villagerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
