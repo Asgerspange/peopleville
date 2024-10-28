@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PeopleVilleEngine.Locations.Buildings.Prison
 {
-    internal class Inmate
+    public class Inmate
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

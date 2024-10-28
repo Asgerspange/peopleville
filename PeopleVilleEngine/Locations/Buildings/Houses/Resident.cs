@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PeopleVilleEngine.Locations.Buildings.Houses
 {
-    internal class Resident
+    public class Resident
     {
         public string Name { get; set; }
         public int Age { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace PeopleVilleEngine.Locations.Buildings.Prison
 {
-    internal class Prison
+    public class Prison
     {
         private List<Inmate> inmates = new List<Inmate>();
         private Dictionary<int, List<Inmate>> cells = new Dictionary<int, List<Inmate>>();
@@ -40,15 +40,6 @@
         public void RecordIncident(string description)
         {
             Console.WriteLine($"Security incident recorded: {description}");
-        }
-
-        public void ScheduleVisit(Guid inmateId, string visitorName, DateTime visitDate)
-        {
-            var inmate = inmates.Find(i => i.Id == inmateId);
-            if (inmate != null)
-            {
-                Console.WriteLine($"Visit scheduled for {visitorName} to see {inmate.Name} on {visitDate}");
-            }
         }
     }
 }

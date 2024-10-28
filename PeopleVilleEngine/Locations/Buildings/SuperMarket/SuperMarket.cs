@@ -1,6 +1,6 @@
 ﻿namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
 {
-    internal class SuperMarket
+    public class SuperMarket
     {
         private Dictionary<string, Food> inventory = new Dictionary<string, Food>();
         private List<SuperMarketLocation> locations = new List<SuperMarketLocation>();

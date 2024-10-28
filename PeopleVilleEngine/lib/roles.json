@@ -1,26 +1,26 @@
 [
   {
-    "role": "Postbud",
-    "weight": 1,
-    "paymentAmount": 15,
-    "startAmount":  100
+    "Role": "Postbud",
+    "Weight": 1,
+    "PaymentAmount": 15,
+    "StartAmount":  100
   },
   {
-    "role": "Kriminel",
-    "weight": 5,
-    "paymentAmount": 25,
-    "startAmount": 100
+    "Role": "Kriminel",
+    "Weight": 5,
+    "PaymentAmount": 25,
+    "StartAmount": 100
   },
   {
-    "role": "Politi",
-    "weight": 9,
-    "paymentAmount": 20,
-    "startAmount": 100
+    "Role": "Politi",
+    "Weight": 9,
+    "PaymentAmount": 20,
+    "StartAmount": 100
   },
   {
-    "role": "Civil",
-    "weight": 85,
-    "paymentAmount": 10,
-    "startAmount": 100
+    "Role": "Civil",
+    "Weight": 85,
+    "PaymentAmount": 10,
+    "StartAmount": 100
   }
 ]

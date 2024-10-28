@@ -1,8 +1,10 @@
 ﻿namespace PeopleVilleEngine.Locations.Buildings.Houses
 {
-    internal class Houses
+    public class Houses : ILocation
     {
-        private List<House> houses = new List<House>();
+        public List<House> houses = new List<House>();
+
+        public string Name { get; private set; } = "Houses";
 
         public void AddHouse(string address, string owner, int numberOfRooms)
         {
@@ -43,6 +45,10 @@
                 Console.WriteLine($"Maintenance requested for house at {house.Address}: {issue}");
             }
         }
+
+        public List<BaseVillager> Villagers()
+        {
+            return new List<BaseVillager>();
+        }
     }
 }
-

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
 {
-    internal class Food
+    public class Food
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
