@@ -1,0 +1,9 @@
+﻿<Window x:Class="VillageView.EventPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Event Details" Height="300" Width="400" Background="#171b33">
+    <StackPanel>
+        <Label x:Name="titleLabel" Content="Event Title" FontSize="24" FontWeight="Bold" Foreground="White" Margin="10"/>
+        <TextBlock x:Name="descriptionTextBlock" Text="Event Description" TextWrapping="Wrap" FontSize="16" Foreground="White" Margin="10"/>
+    </StackPanel>
+</Window>

@@ -10,7 +10,8 @@ namespace VillageView
 {
     public partial class MainWindow : Window
     {
-        private Village village = new Village();
+        private static Village village = new Village();
+        private PeopleVilleEngine.EventManager eventManager = new PeopleVilleEngine.EventManager(village);
 
         public MainWindow()
         {
@@ -99,8 +100,7 @@ namespace VillageView
                         infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Penge: {villager.PersonalWallet.Money}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
-                        infoPanel.Children.Add(new Label { Content = $"Job: {villager.Role}", FontSize=16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
-
+                        infoPanel.Children.Add(new Label { Content = $"Job: {villager.Role}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                     };
 
                     Grid.SetColumn(button, col);
@@ -137,6 +137,14 @@ namespace VillageView
         private void UpdateDayDisplay()
         {
             dayLabel.Content = village.Time.ToString();
+
+            var gameEvents = eventManager.ExecuteEvents();
+            foreach (var gameEvent in gameEvents)
+            {
+                eventLabel.Content = gameEvent.Description;
+                EventPopup popup = new EventPopup(gameEvent.Title, gameEvent.Description);
+                popup.ShowDialog();
+            }
         }
     }
 }
