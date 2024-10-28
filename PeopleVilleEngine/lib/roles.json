@@ -1,18 +1,18 @@
 [
   {
-    "role": "Postbud",
-    "weight": 1
+    "Role": "Postbud",
+    "Weight": 1
   },
   {
-    "role": "Kriminel",
-    "weight": 5
+    "Role": "Kriminel",
+    "Weight": 5
   },
   {
-    "role": "Politi",
-    "weight": 9
+    "Role": "Politi",
+    "Weight": 9
   },
   {
-    "role": "Civil",
-    "weight": 85
+    "Role": "Civil",
+    "Weight": 85
   }
 ]
