@@ -5,12 +5,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace VillageView
 {
     public partial class MainWindow : Window
     {
         private Village village = new Village();
+
+        Random random = new Random();
 
         public MainWindow()
         {
@@ -19,11 +22,14 @@ namespace VillageView
 
             foreach (var location in village.Locations)
             {
+
+
                 // Create a StackPanel for each housing group
                 StackPanel housingPanel = new StackPanel
                 {
                     Margin = new Thickness(10),
-                    Orientation = Orientation.Vertical
+                    Orientation = Orientation.Vertical,
+                    Background = new SolidColorBrush(Color.FromRgb(45, 48, 71))
                 };
 
                 // Get the distinct last names of all villagers in this location
@@ -39,6 +45,7 @@ namespace VillageView
                 {
                     Content = $"Lokation: {locationLabelText}",
                     FontSize = 18,
+                    Foreground = new SolidColorBrush(Colors.White),
                     FontWeight = FontWeights.Bold,
                     Margin = new Thickness(0, 0, 0, 5)
                 };
@@ -46,12 +53,18 @@ namespace VillageView
 
                 Grid villagerGrid = new Grid
                 {
-                    Margin = new Thickness(0, 0, 0, 10)
+                    Margin = new Thickness(0, 0, 0, 10),
                 };
 
                 int col = 0;
                 foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
                 {
+                    string genderPath = villager.IsMale ? "Male" : "Female";
+                    string colorPrefix = villager.IsWhite ? "White" : "Black";
+                    int randomNumber = random.Next(1, villager.IsMale ? 5 : 4);
+
+                    string imagePath = $"/Images/{genderPath}/{colorPrefix}{randomNumber}.png";
+
                     villagerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
                     Grid itemGrid = new Grid();
@@ -62,18 +75,7 @@ namespace VillageView
                     var primaryFontFamily = new FontFamily("Segoe UI");
 
                     Image image = new Image();
-                    if (villager.IsMale)
-                    {
-                        image.Source = villager.IsWhite
-                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/hatman.jpg"))
-                            : new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/MaleBlackVillager.jpg"));
-                    }
-                    else
-                    {
-                        image.Source = villager.IsWhite
-                            ? new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/FemaleWhiteVillager.jpg"))
-                            : new BitmapImage(new Uri("pack://application:,,,/VillageView;component/Images/FemaleBlackVillager.jpg"));
-                    }
+                    image.Source = new BitmapImage(new Uri($"pack://application:,,,/VillageView;component{imagePath}"));
                     image.Stretch = Stretch.Uniform;
                     Grid.SetRow(image, 0);
                     itemGrid.Children.Add(image);
@@ -81,7 +83,9 @@ namespace VillageView
                     Label label = new Label
                     {
                         Content = $"{villager.FirstName} {villager.LastName}",
-                        HorizontalAlignment = HorizontalAlignment.Center
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Foreground = primaryForegroundColor,
+                        FontSize = 16
                     };
                     Grid.SetRow(label, 1);
                     itemGrid.Children.Add(label);
@@ -90,6 +94,8 @@ namespace VillageView
                     {
                         Content = itemGrid,
                         Margin = new Thickness(5),
+                        BorderThickness = new Thickness(0),
+                        Style = (Style)FindResource("VillagerButtonStyle")
                     };
                     button.Click += (sender, e) =>
                     {
@@ -113,10 +119,9 @@ namespace VillageView
 
                 Border housingBorder = new Border
                 {
-                    BorderThickness = new Thickness(2),
-                    BorderBrush = Brushes.Gray,
+                    BorderThickness = new Thickness(5),
+                    BorderBrush = new SolidColorBrush(Color.FromRgb(69, 70, 92)),
                     CornerRadius = new CornerRadius(5),
-                    Padding = new Thickness(10),
                     Child = housingPanel
                 };
 

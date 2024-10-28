@@ -12,9 +12,23 @@
     <None Remove="Images\asd.jpg" />
     <None Remove="Images\FemaleBlackVillager.jpg" />
     <None Remove="Images\FemaleWhiteVillager.jpg" />
+    <None Remove="Images\Female\Black1.png" />
+    <None Remove="Images\Female\Black2.png" />
+    <None Remove="Images\Female\Black3.png" />
+    <None Remove="Images\Female\White1.png" />
+    <None Remove="Images\Female\White2.png" />
+    <None Remove="Images\Female\White3.png" />
     <None Remove="Images\hatman.jpg" />
     <None Remove="Images\MaleBlackVillager.jpg" />
     <None Remove="Images\MaleWhiteVillager.jpg" />
+    <None Remove="Images\Male\Black1.png" />
+    <None Remove="Images\Male\Black2.png" />
+    <None Remove="Images\Male\Black3.png" />
+    <None Remove="Images\Male\Black4.png" />
+    <None Remove="Images\Male\White1.png" />
+    <None Remove="Images\Male\White2.png" />
+    <None Remove="Images\Male\White3.png" />
+    <None Remove="Images\Male\White4.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +38,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\asd.jpg" />
-    <Resource Include="Images\FemaleBlackVillager.jpg" />
-    <Resource Include="Images\FemaleWhiteVillager.jpg" />
-    <Resource Include="Images\hatman.jpg" />
-    <Resource Include="Images\MaleBlackVillager.jpg" />
-    <Resource Include="Images\MaleWhiteVillager.jpg" />
+    <Resource Include="Images\Female\Black1.png" />
+    <Resource Include="Images\Female\Black2.png" />
+    <Resource Include="Images\Female\Black3.png" />
+    <Resource Include="Images\Female\White1.png" />
+    <Resource Include="Images\Female\White2.png" />
+    <Resource Include="Images\Female\White3.png" />
+    <Resource Include="Images\Male\Black1.png" />
+    <Resource Include="Images\Male\Black2.png" />
+    <Resource Include="Images\Male\Black3.png" />
+    <Resource Include="Images\Male\Black4.png" />
+    <Resource Include="Images\Male\White1.png" />
+    <Resource Include="Images\Male\White2.png" />
+    <Resource Include="Images\Male\White3.png" />
+    <Resource Include="Images\Male\White4.png" />
   </ItemGroup>
 
 </Project>
