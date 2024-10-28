@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System;
+using System.Collections.Generic;
 
 namespace VillageView
 {
@@ -49,6 +50,8 @@ namespace VillageView
             RefreshVillagersUI();
         }
 
+        private Dictionary<string, string> villagerImages = new Dictionary<string, string>();
+
         private void RefreshVillagersUI()
         {
             mainPanel.Children.Clear(); // Clear the existing UI elements
@@ -85,13 +88,27 @@ namespace VillageView
                 int col = 0;
                 foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
                 {
+                    string villagerKey = $"{villager.FirstName} {villager.LastName}";
+
                     string genderPath = villager.IsMale ? "Male" : "Female";
                     string colorPrefix = villager.IsWhite ? "White" : "Black";
                     string agePath = villager.Age < 18 ? "Baby/" : "";
 
-                    int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
+                    villagerGrid.Background = new SolidColorBrush(Colors.Green);
 
-                    string imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
+                    string imagePath;
+                    if (!villagerImages.ContainsKey(villagerKey))
+                    {
+                        // Villager not found in the dictionary, generate a new path
+                        int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
+                        imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
+                        villagerImages[villagerKey] = imagePath; // Store the path in the dictionary
+                    }
+                    else
+                    {
+                        // Villager found, use the existing image path
+                        imagePath = villagerImages[villagerKey];
+                    }
 
                     villagerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
