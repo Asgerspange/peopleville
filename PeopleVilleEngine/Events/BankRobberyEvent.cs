@@ -12,7 +12,7 @@ namespace PeopleVilleEngine
 
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Critical;
         public string Type { get; set; } = EventType.Robbery;
-        public string Title { get; set; } = "A bank robbery occurred.";
+        public string Title { get; set; } = "Et bankrøveri fandt sted.";
 
         public List<EventDetails> Execute(Village village)
         {
@@ -21,14 +21,14 @@ namespace PeopleVilleEngine
 
             if (robber != null)
             {
-                string description = $"{robber.FirstName} {robber.LastName} robbed the bank. And got away with $1.000";
+                string description = $"{robber.FirstName} {robber.LastName} røvede banken. Og slap væk med 1.000 kr.";
                 robber.PersonalWallet.AddMoney(1000m);
                 Trace.WriteLine($"{robber.PersonalWallet}");
                 executedEvents.Add(new EventDetails(Title, description, EventSeverity));
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No bank robbery occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "Intet bankrøveri fandt sted.", EventSeverity));
             }
 
             return executedEvents;

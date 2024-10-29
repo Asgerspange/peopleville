@@ -10,7 +10,7 @@ namespace PeopleVilleEngine.Events
     {
         public string Type { get; set; } = EventType.Robbery;
         public EventSeverityLevel EventSeverity { get; set; }
-        public string Title { get; set; } = "A robbery occurred.";
+        public string Title { get; set; } = "Et røveri fandt sted.";
 
         public List<EventDetails> Execute(Village village)
         {
@@ -23,25 +23,25 @@ namespace PeopleVilleEngine.Events
                 var victim = village.Villagers.FirstOrDefault(v => v != robber);
                 if (robber == null || victim == null)
                 {
-                    executedEvents.Add(new EventDetails(Title, $"There is no criminal.", EventSeverity));
+                    executedEvents.Add(new EventDetails(Title, $"Der er ingen kriminel.", EventSeverity));
                     return executedEvents;
                 }
                 decimal stolenAmount = victim.PersonalWallet.Money;
 
                 if (victim.PersonalWallet.Money == 0)
                 {
-                    executedEvents.Add(new EventDetails(Title, $"{victim.FirstName} {victim.LastName} has no money to steal.", EventSeverity));
+                    executedEvents.Add(new EventDetails(Title, $"{victim.FirstName} {victim.LastName} har ingen penge at stjæle.", EventSeverity));
                     return executedEvents;
                 }
 
-                string description = $"{robber.FirstName} {robber.LastName} robbed {victim.FirstName} {victim.LastName} and got away with {stolenAmount}";
+                string description = $"{robber.FirstName} {robber.LastName} røvede {victim.FirstName} {victim.LastName} og slap væk med {stolenAmount}";
                 robber.PersonalWallet.AddMoney(stolenAmount);
                 victim.PersonalWallet.SpendMoney(stolenAmount);
                 executedEvents.Add(new EventDetails(Title, description, EventSeverity));
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No robbery occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "Intet røveri fandt sted.", EventSeverity));
             }
 
             return executedEvents;

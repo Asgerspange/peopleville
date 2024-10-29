@@ -8,9 +8,9 @@ namespace PeopleVilleEngine.Events
 {
     public class MoveVillagerEvent : IEvent
     {
-        public string Type { get; set; } = "MoveVillager";
+        public string Type { get; set; } = "FlytBeboer";
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Low;
-        public string Title { get; set; } = "Move Villager Event";
+        public string Title { get; set; } = "Flyt Beboer Begivenhed";
 
         public List<EventDetails> Execute(Village village)
         {
@@ -26,13 +26,13 @@ namespace PeopleVilleEngine.Events
             }
 
             return new List<EventDetails>
-                        {
-                            new EventDetails(
-                                title: "Move Villager Event",
-                                description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
-                                severity: EventSeverityLevel.Low
-                            )
-                        };
+                            {
+                                new EventDetails(
+                                    title: "Flyt Beboer Begivenhed",
+                                    description: $"Flyttede {villager.FirstName} fra {fromLocation.Name} til {toLocation.Name}.",
+                                    severity: EventSeverityLevel.Low
+                                )
+                            };
         }
     }
 }
