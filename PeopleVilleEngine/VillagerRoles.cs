@@ -66,8 +66,6 @@ namespace PeopleVilleEngine
         {
             public string Role { get; set; }
             public int Weight { get; set; }
-            public decimal PaymentAmount { get; set; }
-            public decimal StartAmount { get; set; }
         }
     }
 }

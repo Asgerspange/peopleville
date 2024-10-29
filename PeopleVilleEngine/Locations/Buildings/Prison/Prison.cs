@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Locations.Buildings.Prison
+﻿namespace PeopleVilleEngine.Locations
 {
     public class Prison : ILocation
     {

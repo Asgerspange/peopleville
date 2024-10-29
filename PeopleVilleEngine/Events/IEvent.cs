@@ -17,6 +17,8 @@ namespace PeopleVilleEngine
             NaturalDisaster = "Natur Katastrofe",
             Murder = "Mord",
             BankRobbery = "Bankrøveri",
+            MoveVillager = "Ryk Villager",
+            Buy = "Køb mad",
             Robbery = "Robbery";
     }
     public class EventDetails

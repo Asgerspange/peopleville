@@ -1,5 +1,4 @@
 ﻿using PeopleVilleEngine.Locations;
-using System.Diagnostics;
 namespace PeopleVilleEngine.Villagers.Creators;
 public class VillagerCreatorAdult : IVillagerCreator
 {
