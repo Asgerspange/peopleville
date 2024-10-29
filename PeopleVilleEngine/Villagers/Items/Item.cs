@@ -1,17 +1,11 @@
 using System.Text.Json;
-
 public interface IItem
 {
-    // Interface metode til at få navn
     string Name { get; set; }
-
-    // Interface metode til at få beskrivelse
     string Description { get; set; }
 
-    //konverterer objektet til en streng
+    // Metoder til at konvertere objekt til string
     string ToString();
-
-    //konverterer objekt til streng med weapondescription
     string ToString(bool includeWeaponDescription, string weaponDescription = "");
 }
 
