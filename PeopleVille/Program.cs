@@ -19,6 +19,10 @@ while (true)
         var locationStatus = location.Name;
         foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
         {
+            Console.WriteLine($"Items in {villager.FirstName}'s inventory");
+            foreach(var item in villager.Inventory) {
+                Console.WriteLine(item);
+            }
             string Status = "Barn";
             if (villager.Age > 18)
             {

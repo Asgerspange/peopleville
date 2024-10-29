@@ -37,13 +37,16 @@ namespace VillageView
 
         private void UpdateDayDisplay()
         {
+            string dayString = village.Time.ToString().Replace("Day ", "");
+            int currentDay = int.Parse(dayString);
+
             dayLabel.Content = village.Time.ToString();
+            dagLabel.Content = ("Dag " + currentDay.ToString());
 
             var gameEvents = eventManager.ExecuteEvents();
-            foreach (var gameEvent in gameEvents)
+            if (gameEvents.Any())
             {
-                eventLabel.Content = gameEvent.Description;
-                EventPopup popup = new EventPopup(gameEvent.Title, gameEvent.Description);
+                EventPopup popup = new EventPopup(gameEvents, currentDay);
                 popup.ShowDialog();
             }
 
@@ -51,10 +54,11 @@ namespace VillageView
         }
 
         private Dictionary<string, string> villagerImages = new Dictionary<string, string>();
+        private List<string> knownVillagerKeys = new List<string>();
 
         private void RefreshVillagersUI()
         {
-            mainPanel.Children.Clear(); // Clear the existing UI elements
+            mainPanel.Children.Clear();
             foreach (var location in village.Locations)
             {
                 StackPanel housingPanel = new StackPanel
@@ -89,25 +93,35 @@ namespace VillageView
                 foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
                 {
                     string villagerKey = $"{villager.FirstName} {villager.LastName}";
+                    var primaryForegroundColor = new SolidColorBrush(Colors.White);
+                    var primaryFontFamily = new FontFamily("Segoe UI");
 
                     string genderPath = villager.IsMale ? "Male" : "Female";
                     string colorPrefix = villager.IsWhite ? "White" : "Black";
                     string agePath = villager.Age < 18 ? "Baby/" : "";
 
-                    villagerGrid.Background = new SolidColorBrush(Colors.Green);
 
                     string imagePath;
-                    if (!villagerImages.ContainsKey(villagerKey))
+                    if (!knownVillagerKeys.Contains(villagerKey))
                     {
-                        // Villager not found in the dictionary, generate a new path
+                        knownVillagerKeys.Add(villagerKey);
+                        string uniqueId = Guid.NewGuid().ToString();
+                        villagerKey = $"{villagerKey}-{uniqueId}";
                         int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
                         imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
-                        villagerImages[villagerKey] = imagePath; // Store the path in the dictionary
+                        villagerImages[villagerKey] = imagePath;
                     }
                     else
                     {
-                        // Villager found, use the existing image path
-                        imagePath = villagerImages[villagerKey];
+                        string fullVillagerKey = villagerImages.Keys.FirstOrDefault(k => k.StartsWith(villagerKey));
+                        if (fullVillagerKey != null)
+                        {
+                            imagePath = villagerImages[fullVillagerKey];
+                        }
+                        else
+                        {
+                            imagePath = "/Images/Male/White1.png";
+                        }
                     }
 
                     villagerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -116,8 +130,6 @@ namespace VillageView
                     itemGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                     itemGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-                    var primaryForegroundColor = new SolidColorBrush(Colors.White);
-                    var primaryFontFamily = new FontFamily("Segoe UI");
 
                     Image image = new Image();
                     image.Source = new BitmapImage(new Uri($"pack://application:,,,/VillageView;component{imagePath}"));
@@ -146,11 +158,50 @@ namespace VillageView
                     {
                         infoPanel.Children.Clear();
                         infoPanel.Children.Add(new Label { Content = "Person Info", FontSize = 32, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, FontWeight = FontWeights.Medium, Margin = new Thickness(10, 7, 0, 0) });
-                        infoPanel.Children.Add(new Label { Content = $"Dag: {village.Time.ToString()}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Penge: {villager.PersonalWallet.Money}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Job: {villager.Role}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
+
+                        // Create and populate the inventory grid
+                        Grid inventoryGrid = new Grid
+                        {
+                            Margin = new Thickness(10, 10, 0, 0),
+                            Background = new SolidColorBrush(Color.FromRgb(34, 34, 34)),
+                        };
+
+                        int columns = 3;
+                        for (int i = 0; i < columns; i++)
+                        {
+                            inventoryGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                        }
+
+                        int row = 0;
+                        int col = 0;
+
+                        foreach (var item in villager.Inventory)
+                        {
+                            if (col == columns)
+                            {
+                                col = 0;
+                                row++;
+                            }
+
+                            inventoryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                            string itemImagePath = $"/Images/Weapons/{item.Name}.png";
+
+                            Image itemImage = new Image();
+                            itemImage.Source = new BitmapImage(new Uri($"pack://application:,,,/VillageView;component{itemImagePath}"));
+                            itemImage.Stretch = Stretch.Uniform;
+                            Grid.SetColumn(itemImage, col);
+                            Grid.SetRow(itemImage, row);
+                            inventoryGrid.Children.Add(itemImage);
+
+                            col++;
+                        }
+
+                        infoPanel.Children.Add(inventoryGrid);
                     };
 
                     Grid.SetColumn(button, col);
@@ -174,5 +225,27 @@ namespace VillageView
             }
         }
 
+        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.OriginalSource == sender)
+            {
+                infoPanel.Children.Clear();
+            }
+        }
+
+        private void mainPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            infoPanel.Children.Clear();
+        }
+
+        private void infoPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateDayDisplay();
+        }
     }
 }

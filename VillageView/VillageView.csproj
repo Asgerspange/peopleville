@@ -33,7 +33,16 @@
     <None Remove="Images\Male\White2.png" />
     <None Remove="Images\Male\White3.png" />
     <None Remove="Images\Male\White4.png" />
+    <None Remove="Images\Weapons\Bat.png" />
+    <None Remove="Images\Weapons\Brass_Knuckles.png" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Images\Weapons\Hammer.png" />
+		<None Remove="Images\Weapons\Knife.jpg" />
+		<None Remove="Images\Weapons\MorningStar.png" />
+		<None Remove="Images\Weapons\Uzi.png" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PeopleVilleEngine\PeopleVilleEngine.csproj">
@@ -60,6 +69,13 @@
     <Resource Include="Images\Male\White2.png" />
     <Resource Include="Images\Male\White3.png" />
     <Resource Include="Images\Male\White4.png" />
+    <Resource Include="Images\Weapons\Bat.png" />
+    <Resource Include="Images\Weapons\Brass_Knuckles.png" />
+    <Resource Include="Images\Weapons\Hammer.png" />
+    <Resource Include="Images\Weapons\Knife.jpg" />
+    <Resource Include="Images\Weapons\MorningStar.png" />
+    <Resource Include="Images\Weapons\Uzi.png" />
+    <Resource Include="Images\Weapons\Whip.png" />
   </ItemGroup>
 
 </Project>
