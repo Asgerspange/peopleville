@@ -19,20 +19,29 @@ namespace PeopleVilleEngine.Events
             var fromLocation = village.Locations.FirstOrDefault(loc => loc.Villagers().Contains(villager));
             var toLocation = village.Locations[random.Next(village.Locations.Count)];
 
-            if (fromLocation != null)
+            if (fromLocation != null && toLocation != null)
             {
                 fromLocation.Villagers().Remove(villager);
                 toLocation.Villagers().Add(villager);
+
+                return new List<EventDetails>
+                {
+                    new EventDetails(
+                        title: "Move Villager Event",
+                        description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
+                        severity: EventSeverityLevel.Low
+                    )
+                };
             }
 
             return new List<EventDetails>
-                        {
-                            new EventDetails(
-                                title: "Move Villager Event",
-                                description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
-                                severity: EventSeverityLevel.Low
-                            )
-                        };
+            {
+                new EventDetails(
+                    title: "Move Villager Event",
+                    description: "Failed to move villager due to null location.",
+                    severity: EventSeverityLevel.Low
+                )
+            };
         }
     }
 }
