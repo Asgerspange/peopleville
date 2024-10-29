@@ -23,7 +23,11 @@ namespace PeopleVilleEngine.Events
             {
                 return new List<EventDetails>
                 {
-
+                new EventDetails(
+                        Title,
+                        "failed",
+                        EventSeverity
+                    )
                 };
             }
             return new List<EventDetails>

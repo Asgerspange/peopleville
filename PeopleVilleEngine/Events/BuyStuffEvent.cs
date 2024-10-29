@@ -28,6 +28,18 @@ namespace PeopleVilleEngine.Events
                 var price = item.Price;
                 var name = item.Name;
 
+                if (villager.PersonalWallet.Money - price <= 0)
+                {
+                    return new List<EventDetails>
+                    {
+                        new EventDetails(
+                            title: "Bought Food",
+                            description: "failed",
+                            severity: EventSeverityLevel.Low
+                        )
+                    };
+                }
+
                 villager.PersonalWallet.SpendMoney(price);
                 Item foodItem = new Item(name, name);
 

@@ -23,7 +23,7 @@ namespace PeopleVilleEngine.Events
                 var victim = village.Villagers.FirstOrDefault(v => v != robber);
                 if (robber == null || victim == null)
                 {
-                    executedEvents.Add(new EventDetails(Title, $"Failed", EventSeverity));
+                    executedEvents.Add(new EventDetails(Title, $"failed", EventSeverity));
                     return executedEvents;
                 }
                 decimal stolenAmount = victim.PersonalWallet.Money;
@@ -41,7 +41,7 @@ namespace PeopleVilleEngine.Events
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "Failed", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "failed", EventSeverity));
             }
 
             return executedEvents;

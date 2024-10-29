@@ -28,7 +28,7 @@ namespace PeopleVilleEngine
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "Failed.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "failed", EventSeverity));
             }
 
             return executedEvents;
