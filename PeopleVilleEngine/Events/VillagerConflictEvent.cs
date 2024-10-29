@@ -8,7 +8,7 @@ namespace PeopleVilleEngine
     {
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Critical;
         public string Type { get; set; } = EventType.Murder;
-        public string Title { get; set; } = "A villager conflict led to a fatality.";
+        public string Title { get; set; } = "En konflikt mellem landsbyboere førte til en dødsfald.";
 
         public List<EventDetails> Execute(Village village)
         {
@@ -19,12 +19,12 @@ namespace PeopleVilleEngine
             if (victim != null && attacker != null)
             {
                 village.Villagers.Remove(victim);
-                string description = $"{attacker.FirstName} {attacker.LastName} killed {victim.FirstName} {victim.LastName} in a conflict.";
+                string description = $"{attacker.FirstName} {attacker.LastName} dræbte {victim.FirstName} {victim.LastName} i en konflikt.";
                 executedEvents.Add(new EventDetails(Title, description, EventSeverity));
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No conflict occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "Ingen konflikt opstod.", EventSeverity));
             }
 
             return executedEvents;

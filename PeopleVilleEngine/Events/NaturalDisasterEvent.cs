@@ -10,7 +10,7 @@ namespace PeopleVilleEngine.Events
     {
         public string Type { get; set; } = EventType.NaturalDisaster;
         public EventSeverityLevel EventSeverity { get; set; }
-        public string Title { get; set; } = "A natural disaster has struck the village!";
+        public string Title { get; set; } = "En naturkatastrofe har ramt landsbyen!";
 
         public List<EventDetails> Execute(Village village)
         {
@@ -23,7 +23,7 @@ namespace PeopleVilleEngine.Events
                     eventDetails.Add(new EventDetails
                     (
                         Title,
-                        $"{villager.FirstName + " " + villager.LastName} was affected by the natural disaster.",
+                        $"{villager.FirstName + " " + villager.LastName} blev ramt af naturkatastrofen.",
                         EventSeverity
                     ));
                 }
