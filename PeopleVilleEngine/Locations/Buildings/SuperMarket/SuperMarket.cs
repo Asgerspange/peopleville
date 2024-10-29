@@ -1,4 +1,4 @@
-﻿namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
+﻿namespace PeopleVilleEngine.Locations
 {
     public class SuperMarketLocation : ILocation
     {
