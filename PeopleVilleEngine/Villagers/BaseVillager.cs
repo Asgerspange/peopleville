@@ -61,7 +61,6 @@ public abstract class BaseVillager
         }
     }
 
-
     public void CheckPetAge()
     {
         if (Pet != null && Pet.Age >= 10)
@@ -94,6 +93,20 @@ public abstract class BaseVillager
             Inventory.Add(item);
         }
     }
+
+    public void AddToy(ChildrenToys toy)
+    {
+        if (Inventory.Count >= MaxInventorySize)
+        {
+            Console.WriteLine($"{FirstName} {LastName} kan ikke bære flere ting.");
+        }
+        else
+        {
+            Inventory.Add(new Item(toy.Name, toy.Description));
+        }
+    }
+
+
 
     public override string ToString()
     {

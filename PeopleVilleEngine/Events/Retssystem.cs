@@ -1,11 +1,10 @@
-﻿using PeopleVilleEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace PeopleVilleEngine
+namespace PeopleVilleEngine.Events
 {
     public class Retssystem
     {
@@ -29,7 +28,7 @@ namespace PeopleVilleEngine
 
         public Event GenerateTrialEvent(string villagerName)
         {
-            string rolle = "Kriminel"; 
+            string rolle = "Kriminel";
             if (rolle != "Kriminel")
                 throw new ArgumentException("Kun kriminielle kan blive dømt i retssystemet.");
             int udfald = _random.Next(100); // 0-99
