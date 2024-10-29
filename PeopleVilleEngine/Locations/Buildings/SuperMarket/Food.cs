@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PeopleVilleEngine.Locations.Buildings.SuperMarket
+﻿namespace PeopleVilleEngine
 {
     public class Food
     {
