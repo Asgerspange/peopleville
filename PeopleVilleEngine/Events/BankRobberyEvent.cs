@@ -28,7 +28,7 @@ namespace PeopleVilleEngine
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No bank robbery occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "Failed.", EventSeverity));
             }
 
             return executedEvents;

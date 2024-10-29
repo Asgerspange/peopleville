@@ -40,7 +40,7 @@ namespace PeopleVilleEngine
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No conflict occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "Failed", EventSeverity));
             }
 
             return executedEvents;
