@@ -1,0 +1,18 @@
+[
+  {
+    "Role": "Postbud",
+    "Weight": 1
+  },
+  {
+    "Role": "Kriminel",
+    "Weight": 5
+  },
+  {
+    "Role": "Politi",
+    "Weight": 9
+  },
+  {
+    "Role": "Civil",
+    "Weight": 85
+  }
+]

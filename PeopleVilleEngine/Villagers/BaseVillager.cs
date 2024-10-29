@@ -3,6 +3,7 @@ using PeopleVilleEngine.Locations;
 using PeopleVilleEngine.Villagers.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public abstract class BaseVillager
 {
@@ -21,6 +22,7 @@ public abstract class BaseVillager
     public Wallet PersonalWallet { get; private set; }
     public Pet? Pet { get; set; }
     public List<Item> Inventory { get; private set; } = new List<Item>();
+    public Item? Weapon { get; private set; }
 
     protected BaseVillager(Village village)
     {
@@ -28,10 +30,14 @@ public abstract class BaseVillager
         IsMale = RNG.GetInstance().Next(0, 2) == 0;
         IsWhite = RNG.GetInstance().Next(0, 5) != 0;
         (FirstName, LastName) = village.VillagerNameLibrary.GetRandomNames(IsMale);
+        Age = RNG.GetInstance().Next(18, 60);
         if (Age >= 18)
         {
             Role = village.VillagerRoleLibrary.GetRandomRole();
             AssignRandomPet();
+            Console.WriteLine($"Tildelt våben til {FirstName} {LastName}"); // Debug output
+            ArmedVillager.AssignWeaponToVillager(this);
+            Console.WriteLine($"Våben tildelt: {Weapon?.Name ?? "Ingen"}"); // Debug output
         }
         Hobby = village.VillagerHobbyLibrary.GetRandomHobby();
         PersonalWallet = new Wallet("$", 100m);
@@ -86,11 +92,18 @@ public abstract class BaseVillager
     {
         if (Inventory.Count >= MaxInventorySize)
         {
-            Console.WriteLine($"{FirstName} {LastName} kan ikke bære flere ting.");
+            Console.WriteLine($"{FirstName} {LastName} Kan ikke være flere ting.");
         }
         else
         {
             Inventory.Add(item);
+            Console.WriteLine($"Added {item.Name} to {FirstName} {LastName}'s inventory."); // Debug output
+
+            if (item.IsWeapon)
+            {
+                Weapon = item;
+                Console.WriteLine($"{item.Name} er et våben og er blevet sat som {FirstName} {LastName}'s våben."); // Debug output
+            }
         }
     }
 
@@ -110,6 +123,9 @@ public abstract class BaseVillager
 
     public override string ToString()
     {
-        return $"{FirstName} {LastName} ({Age} år) - Job: {Role} - Hobby: {Hobby}";
+        string weaponInfo = Weapon != null ? $" - bevæbnet med: {Weapon.Name} ({Weapon.Description})" : "";
+        string hobbiesInfo = !string.IsNullOrEmpty(Hobby) ? $" - Hobby: {Hobby}" : "";
+
+        return $"{FirstName} {LastName}, Age: {Age}, Rolle: {Role}{weaponInfo}{hobbiesInfo}";
     }
 }
