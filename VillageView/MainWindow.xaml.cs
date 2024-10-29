@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System;
+using System.Collections.Generic;
 
 namespace VillageView
 {
@@ -36,18 +37,24 @@ namespace VillageView
 
         private void UpdateDayDisplay()
         {
+            string dayString = village.Time.ToString().Replace("Day ", "");
+            int currentDay = int.Parse(dayString);
+
             dayLabel.Content = village.Time.ToString();
+            dagLabel.Content = ("Dag " + currentDay.ToString());
 
             var gameEvents = eventManager.ExecuteEvents();
-            foreach (var gameEvent in gameEvents)
+            if (gameEvents.Any())
             {
-                eventLabel.Content = gameEvent.Description;
-                EventPopup popup = new EventPopup(gameEvent.Title, gameEvent.Description);
+                EventPopup popup = new EventPopup(gameEvents, currentDay);
                 popup.ShowDialog();
             }
 
             RefreshVillagersUI();
         }
+
+        private Dictionary<string, string> villagerImages = new Dictionary<string, string>();
+        private List<string> knownVillagerKeys = new List<string>();
 
         private void RefreshVillagersUI()
         {
@@ -85,6 +92,7 @@ namespace VillageView
                 int col = 0;
                 foreach (var villager in location.Villagers().OrderByDescending(v => v.Age))
                 {
+                    string villagerKey = $"{villager.FirstName} {villager.LastName}";
                     var primaryForegroundColor = new SolidColorBrush(Colors.White);
                     var primaryFontFamily = new FontFamily("Segoe UI");
 
@@ -92,9 +100,29 @@ namespace VillageView
                     string colorPrefix = villager.IsWhite ? "White" : "Black";
                     string agePath = villager.Age < 18 ? "Baby/" : "";
 
-                    int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
 
-                    string imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
+                    string imagePath;
+                    if (!knownVillagerKeys.Contains(villagerKey))
+                    {
+                        knownVillagerKeys.Add(villagerKey);
+                        string uniqueId = Guid.NewGuid().ToString();
+                        villagerKey = $"{villagerKey}-{uniqueId}";
+                        int randomNumber = villager.Age < 18 ? 1 : random.Next(1, villager.IsMale ? 5 : 4);
+                        imagePath = $"/Images/{genderPath}/{agePath}{colorPrefix}{randomNumber}.png";
+                        villagerImages[villagerKey] = imagePath;
+                    }
+                    else
+                    {
+                        string fullVillagerKey = villagerImages.Keys.FirstOrDefault(k => k.StartsWith(villagerKey));
+                        if (fullVillagerKey != null)
+                        {
+                            imagePath = villagerImages[fullVillagerKey];
+                        }
+                        else
+                        {
+                            imagePath = "/Images/Male/White1.png";
+                        }
+                    }
 
                     villagerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
@@ -130,7 +158,6 @@ namespace VillageView
                     {
                         infoPanel.Children.Clear();
                         infoPanel.Children.Add(new Label { Content = "Person Info", FontSize = 32, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, FontWeight = FontWeights.Medium, Margin = new Thickness(10, 7, 0, 0) });
-                        infoPanel.Children.Add(new Label { Content = $"Dag: {village.Time.ToString()}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Navn: {villager.FirstName} {villager.LastName}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Alder: {villager.Age}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
                         infoPanel.Children.Add(new Label { Content = $"Penge: {villager.PersonalWallet.Money}", FontSize = 16, Foreground = primaryForegroundColor, FontFamily = primaryFontFamily, Margin = new Thickness(10, 0, 0, 0) });
@@ -196,6 +223,29 @@ namespace VillageView
 
                 mainPanel.Children.Add(housingBorder);
             }
+        }
+
+        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.OriginalSource == sender)
+            {
+                infoPanel.Children.Clear();
+            }
+        }
+
+        private void mainPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            infoPanel.Children.Clear();
+        }
+
+        private void infoPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            village.Time.UpdateDay();
         }
     }
 }

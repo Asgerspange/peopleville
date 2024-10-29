@@ -33,6 +33,16 @@
     <None Remove="Images\Male\White2.png" />
     <None Remove="Images\Male\White3.png" />
     <None Remove="Images\Male\White4.png" />
+    <None Remove="Images\Pets\Cat.png" />
+    <None Remove="Images\Pets\Cow.png" />
+    <None Remove="Images\Pets\Dog.png" />
+    <None Remove="Images\Pets\Horse.png" />
+    <None Remove="Images\Pets\Pig.png" />
+    <None Remove="Images\Toys\actionfigure.png" />
+    <None Remove="Images\Toys\dollhouse.png" />
+    <None Remove="Images\Toys\puzzle.png" />
+    <None Remove="Images\Toys\rubix.png" />
+    <None Remove="Images\Toys\teddybear.png" />
     <None Remove="Images\Weapons\Bat.png" />
     <None Remove="Images\Weapons\Brass_Knuckles.png" />
   </ItemGroup>
@@ -69,6 +79,16 @@
     <Resource Include="Images\Male\White2.png" />
     <Resource Include="Images\Male\White3.png" />
     <Resource Include="Images\Male\White4.png" />
+    <Resource Include="Images\Pets\Cat.png" />
+    <Resource Include="Images\Pets\Cow.png" />
+    <Resource Include="Images\Pets\Dog.png" />
+    <Resource Include="Images\Pets\Horse.png" />
+    <Resource Include="Images\Pets\Pig.png" />
+    <Resource Include="Images\Toys\actionfigure.png" />
+    <Resource Include="Images\Toys\dollhouse.png" />
+    <Resource Include="Images\Toys\puzzle.png" />
+    <Resource Include="Images\Toys\rubix.png" />
+    <Resource Include="Images\Toys\teddybear.png" />
     <Resource Include="Images\Weapons\Bat.png" />
     <Resource Include="Images\Weapons\Brass_Knuckles.png" />
     <Resource Include="Images\Weapons\Hammer.png" />

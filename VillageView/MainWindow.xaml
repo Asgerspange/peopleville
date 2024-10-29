@@ -31,7 +31,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid PreviewMouseDown="Grid_PreviewMouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
@@ -39,13 +39,18 @@
 
         <!-- Left Panel: Scrollable Villager Grid with Borders for each Housing Group -->
         <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,444,0" VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="mainPanel" Margin="10">
-                <!-- Housing Groups will be dynamically added here -->
-            </StackPanel>
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <Label x:Name="dagLabel" Content="Dag 1" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left" Margin="10, 10, 0, 0"/>
+                    <Button Click="Button_Click" Content="Næste dag" Background="#45465c" FontSize="18" Foreground="White" Width="120" Height="40" DockPanel.Dock="Right" HorizontalAlignment="Right" BorderThickness="0" Margin="0, 10, 10, 0"/>
+                </DockPanel>
+                <StackPanel Name="mainPanel" Margin="10" MouseDown="mainPanel_MouseDown">
+                </StackPanel>
+            </DockPanel>
         </ScrollViewer>
 
         <!-- Right Panel: Info Panel -->
-        <StackPanel Background="#45465c" Grid.Column="1" Name="infoPanel" Width="450">
+        <StackPanel Background="#45465c" Grid.Column="1" Name="infoPanel" Width="450" MouseDown="infoPanel_MouseDown">
             <Label Content="Person Info" Foreground="White" FontSize="32" FontFamily="Segoe UI" FontWeight="Medium" Margin="10, 7, 0, 0"/>
             <Label x:Name="dayLabel" Content="Dag: 1" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
             <Label x:Name="eventLabel" Content="Event" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0" />

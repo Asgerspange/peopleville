@@ -20,6 +20,9 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Locations\Buildings\SuperMarket\" />
+	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)PeopleVille\bin$(Configuration)\net8.0\lib /I /Y" />
 		<Exec Command="xcopy $(ProjectDir)lib $(SolutionDir)VillageView\bin$(Configuration)\net8.0-windows\lib /I /Y" />

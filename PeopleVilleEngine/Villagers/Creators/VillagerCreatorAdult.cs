@@ -34,13 +34,20 @@ public class VillagerCreatorAdult : IVillagerCreator
             .Where(p => p.Villagers().Count(v => v.GetType() == typeof(AdultVillager)) < 2)
             .Where(p => ((IHouse)p).Population < ((IHouse)p).MaxPopulation).ToList();
 
+
         if (potentialHomes.Count > 0 && random.Next(1, 5) != 1) //Return current house
             return (IHouse)potentialHomes[random.Next(0, potentialHomes.Count)];
 
-        //create a new house
-        IHouse house = new SimpleHouse();
+        IHouse house;
+        if (random.Next(0, 2) == 0)
+        {
+            house = new House();
+        }
+        else
+        {
+            house = new SimpleHouse();
+        }
         village.Locations.Add(house);
         return house;
-
     }
 }
