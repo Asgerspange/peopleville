@@ -6,7 +6,9 @@ using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace VillageView
 {
@@ -189,17 +191,46 @@ namespace VillageView
 
                             inventoryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-                            string itemImagePath = $"/Images/Weapons/{item.Name}.png";
+                            Trace.WriteLine(item.Name.ToLower());
+                            string[] potentialPaths = {
+                                $"/Images/Weapons/{item.Name.ToLower()}.png",
+                                $"/Images/Food/{item.Name.ToLower()}.png",
+                                $"/Images/Toys/{item.Name.ToLower()}.png"
+                            };
 
-                            Image itemImage = new Image();
-                            itemImage.Source = new BitmapImage(new Uri($"pack://application:,,,/VillageView;component{itemImagePath}"));
-                            itemImage.Stretch = Stretch.Uniform;
-                            Grid.SetColumn(itemImage, col);
-                            Grid.SetRow(itemImage, row);
-                            inventoryGrid.Children.Add(itemImage);
+                            BitmapImage imageSource = null;
+
+                            foreach (var path in potentialPaths)
+                            {
+                                try
+                                {
+                                    Uri uri = new Uri($"pack://application:,,,/VillageView;component{path}", UriKind.RelativeOrAbsolute);
+                                    imageSource = new BitmapImage(uri);
+                                    break;  // Exit loop if an image is found
+                                }
+                                catch
+                                {
+                                    // Continue to the next path if the image is not found
+                                }
+                            }
+
+                            if (imageSource != null)  // Only add the image if a path succeeded
+                            {
+                                Image itemImage = new Image
+                                {
+                                    Source = imageSource,
+                                    Stretch = Stretch.Uniform
+                                };
+
+                                Grid.SetColumn(itemImage, col);
+                                Grid.SetRow(itemImage, row);
+                                inventoryGrid.Children.Add(itemImage);
+                            }
 
                             col++;
                         }
+
+
 
                         infoPanel.Children.Add(inventoryGrid);
                     };

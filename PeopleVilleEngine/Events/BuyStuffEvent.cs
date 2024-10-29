@@ -20,7 +20,7 @@ namespace PeopleVilleEngine.Events
                 {
                     ("Banan", 2m),
                     ("Æble", 1m),
-                    ("Appelsin", 1.5m),
+                    ("Appelsin", 3m),
                 };
 
             foreach (var item in itemsForSale)
