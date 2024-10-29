@@ -191,7 +191,6 @@ namespace VillageView
 
                             inventoryGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-                            Trace.WriteLine(item.Name.ToLower());
                             string[] potentialPaths = {
                                 $"/Images/Weapons/{item.Name.ToLower()}.png",
                                 $"/Images/Food/{item.Name.ToLower()}.png",
@@ -210,7 +209,6 @@ namespace VillageView
                                 }
                                 catch
                                 {
-                                    // Continue to the next path if the image is not found
                                 }
                             }
 

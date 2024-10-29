@@ -51,7 +51,7 @@
 
 	<ItemGroup>
 		<None Remove="Images\Weapons\Hammer.png" />
-		<None Remove="Images\Weapons\Knife.jpg" />
+		<None Remove="Images\Weapons\kniv.png" />
 		<None Remove="Images\Weapons\knojern.png" />
 		<None Remove="Images\Weapons\morgenstjerne.png" />
 		<None Remove="Images\Weapons\uzi.png" />
@@ -99,9 +99,9 @@
     <Resource Include="Images\Toys\rubix.png" />
     <Resource Include="Images\Toys\teddybear.png" />
     <Resource Include="Images\Weapons\bat.png" />
+    <Resource Include="Images\Weapons\kniv.png" />
     <Resource Include="Images\Weapons\knojern.png" />
     <Resource Include="Images\Weapons\hammer.png" />
-    <Resource Include="Images\Weapons\knife.jpg" />
     <Resource Include="Images\Weapons\morgenstjerne.png" />
     <Resource Include="Images\Weapons\uzi.png" />
     <Resource Include="Images\Weapons\pisk.png" />
