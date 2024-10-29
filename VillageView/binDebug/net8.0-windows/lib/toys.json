@@ -1,3 +1,24 @@
 {
-"Legetøj": ["Bamse", "Actionfigur","Rubiksterning","Dukkehus","Puslespil","Bold"]
+  "Legetøj": [
+    {
+      "name": "Bamse",
+      "description": "Blød bamse til børn"
+    },
+    {
+      "name": "Actionfigur",
+      "description": "Figur af en superhelt"
+    },
+    {
+      "name": "Rubiksterning",
+      "description": "3D-puslespil i terningform"
+    },
+    {
+      "name": "Dukkehus",
+      "description": "Et lille dukkehus med møbler"
+    },
+    {
+      "name": "Puslespil",
+      "description": "100-brikker puslespil"
+    }
+  ]
 }

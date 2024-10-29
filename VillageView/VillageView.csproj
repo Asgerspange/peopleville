@@ -41,11 +41,11 @@
     <None Remove="Images\Pets\Dog.png" />
     <None Remove="Images\Pets\Horse.png" />
     <None Remove="Images\Pets\Pig.png" />
-    <None Remove="Images\Toys\actionfigure.png" />
-    <None Remove="Images\Toys\dollhouse.png" />
-    <None Remove="Images\Toys\puzzle.png" />
-    <None Remove="Images\Toys\rubix.png" />
-    <None Remove="Images\Toys\teddybear.png" />
+    <None Remove="Images\Toys\actionfigur.png" />
+    <None Remove="Images\Toys\bamse.png" />
+    <None Remove="Images\Toys\dukkehus.png" />
+    <None Remove="Images\Toys\puslespil.png" />
+    <None Remove="Images\Toys\rubiksterning.png" />
     <None Remove="Images\Weapons\Bat.png" />
   </ItemGroup>
 
@@ -93,11 +93,11 @@
     <Resource Include="Images\Pets\dog.png" />
     <Resource Include="Images\Pets\horse.png" />
     <Resource Include="Images\Pets\pig.png" />
-    <Resource Include="Images\Toys\actionfigure.png" />
-    <Resource Include="Images\Toys\dollhouse.png" />
-    <Resource Include="Images\Toys\puzzle.png" />
-    <Resource Include="Images\Toys\rubix.png" />
-    <Resource Include="Images\Toys\teddybear.png" />
+    <Resource Include="Images\Toys\actionfigur.png" />
+    <Resource Include="Images\Toys\dukkehus.png" />
+    <Resource Include="Images\Toys\puslespil.png" />
+    <Resource Include="Images\Toys\rubiksterning.png" />
+    <Resource Include="Images\Toys\bamse.png" />
     <Resource Include="Images\Weapons\bat.png" />
     <Resource Include="Images\Weapons\kniv.png" />
     <Resource Include="Images\Weapons\knojern.png" />

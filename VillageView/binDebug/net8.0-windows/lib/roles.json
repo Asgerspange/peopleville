@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< HEAD
     "Role": "Postbud",
     "Weight": 1
   },
@@ -15,21 +14,5 @@
   {
     "Role": "Civil",
     "Weight": 85
-=======
-    "role": "Postbud",
-    "weight": 1
-  },
-  {
-    "role": "Kriminel",
-    "weight": 5
-  },
-  {
-    "role": "Politi",
-    "weight": 9
-  },
-  {
-    "role": "Civil",
-    "weight": 85
->>>>>>> master
   }
 ]

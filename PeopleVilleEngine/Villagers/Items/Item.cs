@@ -1,4 +1,6 @@
+using System.Diagnostics;
 using System.Text.Json;
+
 public interface IItem
 {
     string Name { get; set; }
@@ -66,7 +68,7 @@ public class ChildrenToys : Item
         string jsonFile = "lib\\toys.json";
         if (!File.Exists(jsonFile))
         {
-            Console.WriteLine($"File not found: {jsonFile}");
+            Trace.WriteLine($"File not found: {jsonFile}");
             throw new FileNotFoundException(jsonFile);
         }
 
@@ -77,16 +79,16 @@ public class ChildrenToys : Item
             if (jsonObject != null && jsonObject.ContainsKey("Legetøj"))
             {
                 toyList = jsonObject["Legetøj"].Select(toy => new ChildrenToys(toy["name"], toy["description"])).ToList();
-                Console.WriteLine($"Loaded {toyList.Count} toys.");
+                Trace.WriteLine($"Loaded {toyList.Count} toys.");
             }
             else
             {
-                Console.WriteLine("Failed to deserialize toys data.");
+                Trace.WriteLine("Failed to deserialize toys data.");
             }
         }
         catch (JsonException ex)
         {
-            Console.WriteLine($"JSON Deserialization error: {ex.Message}");
+            Trace.WriteLine($"JSON Deserialization error: {ex.Message}");
         }
     }
 

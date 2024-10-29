@@ -1,6 +1,7 @@
 ﻿using PeopleVilleEngine.Locations;
 using PeopleVilleEngine.Villagers.Items;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace PeopleVilleEngine.Villagers.Creators
@@ -31,7 +32,7 @@ namespace PeopleVilleEngine.Villagers.Creators
 
             var random = RNG.GetInstance();
             var child = new ChildVillager(village);
-
+            Trace.WriteLine(child.ToString());
             var first = home.Villagers().First(v => v.GetType() == typeof(AdultVillager));
             child.LastName = first.LastName;
 
@@ -51,7 +52,6 @@ namespace PeopleVilleEngine.Villagers.Creators
             var potentialHomes = village.Locations.Where(p => p.GetType().IsAssignableTo(typeof(IHouse)))
                .Where(p => p.Villagers().Count(v => v.GetType() == typeof(AdultVillager)) >= 2)
                .Where(p => ((IHouse)p).Population < ((IHouse)p).MaxPopulation).ToList();
-
             if (potentialHomes.Count == 0)
                 return null;
 

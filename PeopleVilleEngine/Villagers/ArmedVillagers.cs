@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public interface IArmed
 {
@@ -106,21 +107,12 @@ public class ArmedVillager : BaseVillager, IArmed
 
         var weapon = _weapons[RNG.GetInstance().Next(_weapons.Count)];
         var weaponItem = new Item(weapon.Name, weapon.Description, true);
+            Trace.WriteLine(villager.Age);
+        if (villager.Age < 18) {
+            return;
+        }
         villager.AddItem(weaponItem);
         Console.WriteLine($"Weapon {weaponItem.Name} tildelt til {villager.FirstName} {villager.LastName}"); // Debug output
-    }
-
-    public static void AssignWeaponToVillager(BaseVillager villager)
-    {
-        if (_weapons == null || _weapons.Count == 0)
-        {
-            throw new InvalidOperationException("Weapons collection is not initialized.");
-        }
-
-        var weapon = _weapons[RNG.GetInstance().Next(_weapons.Count)];
-        var weaponItem = new Item(weapon.Name, weapon.Description, true);
-        villager.AddItem(weaponItem);
-        Console.WriteLine($"Weapon {weaponItem.Name} assigned to {villager.FirstName} {villager.LastName}"); // Debug output
     }
 
     public override string ToString()

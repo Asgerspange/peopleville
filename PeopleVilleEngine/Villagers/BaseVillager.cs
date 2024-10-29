@@ -36,7 +36,6 @@ public abstract class BaseVillager
             Role = village.VillagerRoleLibrary.GetRandomRole();
             AssignRandomPet();
             Console.WriteLine($"Tildelt våben til {FirstName} {LastName}"); // Debug output
-            ArmedVillager.AssignWeaponToVillager(this);
             Console.WriteLine($"Våben tildelt: {Weapon?.Name ?? "Ingen"}"); // Debug output
         }
         Hobby = village.VillagerHobbyLibrary.GetRandomHobby();

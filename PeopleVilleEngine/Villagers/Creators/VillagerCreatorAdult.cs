@@ -1,5 +1,6 @@
 ﻿using PeopleVilleEngine.Locations;
 using PeopleVilleEngine.Villagers;
+using System.Diagnostics;
 
 namespace PeopleVilleEngine.Villagers.Creators
 {
@@ -50,7 +51,7 @@ namespace PeopleVilleEngine.Villagers.Creators
         {
             if (adult.Age >= 18)
             {
-                ArmedVillager.AssignWeaponToVillager(adult);
+                ArmedVillager.AssignWeaponToAdult(adult);
             }
         }
     }
