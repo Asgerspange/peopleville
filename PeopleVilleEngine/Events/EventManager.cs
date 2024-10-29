@@ -19,14 +19,22 @@ namespace PeopleVilleEngine
             var events = new List<IEvent>();
 
             LoadEvents(AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()), events);
+
             var random = new Random();
-            int numberOfEventsToExecute = random.Next(1, events.Count);
+            int numberOfEventsToExecute = random.Next(1, events.Count + 1);
             var selectedEvents = events.OrderBy(x => random.Next()).Take(numberOfEventsToExecute);
 
             foreach (var gameEvent in selectedEvents)
             {
                 var executedEvents = gameEvent.Execute(ref _village);
-                allExecutedEvents.AddRange(executedEvents);
+
+                bool hasFailed = executedEvents.Any(e => e.Description.Equals("failed", StringComparison.OrdinalIgnoreCase));
+
+                // If none of the events failed, add them to allExecutedEvents
+                if (hasFailed == false)
+                {
+                    allExecutedEvents.AddRange(executedEvents);
+                }
             }
 
             return allExecutedEvents;
