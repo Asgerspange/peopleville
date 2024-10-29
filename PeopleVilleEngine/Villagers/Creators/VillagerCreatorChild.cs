@@ -1,5 +1,7 @@
 ﻿using PeopleVilleEngine.Locations;
 using PeopleVilleEngine.Villagers.Items;
+using System;
+using System.Linq;
 
 namespace PeopleVilleEngine.Villagers.Creators
 {
@@ -10,8 +12,22 @@ namespace PeopleVilleEngine.Villagers.Creators
             var home = FindHome(village);
             if (home == null) return false;
 
-            // Load toys data if not already loaded
-            ChildrenToys.LoadToysFromJsonFile();
+            Console.WriteLine("Loading toys from JSON file...");
+            try
+            {
+                ChildrenToys.LoadToysFromJsonFile();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading toys: {ex.Message}");
+                return false;
+            }
+
+            if (ChildrenToys.GetToyListCount() == 0)
+            {
+                Console.WriteLine("No toys loaded. Aborting villager creation.");
+                return false;
+            }
 
             var random = RNG.GetInstance();
             var child = new ChildVillager(village);

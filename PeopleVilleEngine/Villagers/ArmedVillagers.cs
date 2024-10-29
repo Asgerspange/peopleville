@@ -1,52 +1,78 @@
 ﻿using PeopleVilleEngine;
+using System;
+using System.IO;
 using System.Text.Json;
+using System.Collections.Generic;
 
 public interface IArmed
 {
-    string Weapon { get; }
+    Item Weapon { get; }
     string WeaponDescription { get; }
     void LoadWeaponsFromJsonFile(string jsonFile);
 }
 
 public class ArmedVillager : BaseVillager, IArmed
 {
-    public string Weapon { get; private set; }
+    public new Item Weapon { get; private set; }
     public string WeaponDescription { get; private set; }
     private static List<(string Name, string Description)> _weapons;
 
     static ArmedVillager()
     {
-        var instance = new ArmedVillager(new Village());
-        instance.LoadWeaponsFromJsonFile("lib\\weaponDescription.json");
+        LoadWeaponsFromJsonFileStatic("lib\\weaponDescription.json");
+        if (_weapons == null || _weapons.Count == 0)
+        {
+            throw new InvalidOperationException("Fejlede i load våben fra JSON fil.");
+        }
     }
 
     public ArmedVillager(Village village) : base(village)
     {
         var weapon = AssignRandomWeapon();
-        Weapon = weapon.Name;
+        Weapon = new Item(weapon.Name, weapon.Description);
         WeaponDescription = weapon.Description;
-        AddWeaponToInventory(weapon);
     }
 
-    // Indlæser Weapondata fra en JSON-fil
     public void LoadWeaponsFromJsonFile(string jsonFile)
     {
-        if (!File.Exists(jsonFile))
-            throw new FileNotFoundException(jsonFile);
+        LoadWeaponsFromJsonFileStatic(jsonFile);
+    }
 
-        string jsonData = File.ReadAllText(jsonFile);
-        var weaponsData = JsonSerializer.Deserialize<List<(string Name, string Description)>>(jsonData);
-        if (weaponsData != null)
+    private static void LoadWeaponsFromJsonFileStatic(string jsonFile)
+    {
+        try
         {
-            _weapons = weaponsData;
+            if (!File.Exists(jsonFile))
+            {
+                throw new FileNotFoundException($" Filen {jsonFile} findes ikke.");
+            }
+
+            string jsonData = File.ReadAllText(jsonFile);
+            var weaponsData = JsonSerializer.Deserialize<WeaponData>(jsonData);
+
+            if (weaponsData != null && weaponsData.WeaponDescription != null)
+            {
+                _weapons = weaponsData.WeaponDescription;
+                Console.WriteLine($"Successfully loaded {_weapons.Count} våben fra {jsonFile}.");
+            }
+            else
+            {
+                _weapons = new List<(string Name, string Description)>();
+                Console.WriteLine("Ingen våben fundet i JSON fil.");
+            }
         }
-        else
+        catch (Exception ex)
         {
+            Console.WriteLine($"Fejl ved loading af våben fra JSON file: {ex.Message}");
             _weapons = new List<(string Name, string Description)>();
         }
     }
 
-    // Constructor kalder base-klassen "Villager", "Weapon" initialisereres ved at kalde metoden "AssignRandomWeapon"
+    private class WeaponData
+    {
+        public List<(string Name, string Description)> WeaponDescription { get; set; } = new List<(string Name, string Description)>();
+    }
+
     private (string Name, string Description) AssignRandomWeapon()
     {
         try
@@ -57,29 +83,45 @@ public class ArmedVillager : BaseVillager, IArmed
         }
         catch (Exception ex)
         {
-            // Error Handling: Logger undtagelsen og returnerer et "standard våben"
-            Console.WriteLine($"Fejl ved tildeling af tilfældigt våben: {ex.Message}");
-            return _weapons[0]; // Returnerer det første våben i listen som standard
+            Console.WriteLine($"Fejl ved tildeling af våben: {ex.Message}");
+            return _weapons[0];
         }
     }
 
-    // Adds the weapon to the villager's inventory
     private void AddWeaponToInventory((string Name, string Description) weapon)
     {
         var weaponItem = new Item(weapon.Name, weapon.Description);
         AddItem(weaponItem);
     }
 
-    // Assigns a random weapon to any villager
+    public static void AssignWeaponToAdult(BaseVillager villager)
+    {
+        if (_weapons == null || _weapons.Count == 0)
+        {
+            throw new InvalidOperationException("Weapons collection is not initialized.");
+        }
+
+        var weapon = _weapons[RNG.GetInstance().Next(_weapons.Count)];
+        var weaponItem = new Item(weapon.Name, weapon.Description, true);
+        villager.AddItem(weaponItem);
+        Console.WriteLine($"Weapon {weaponItem.Name} tildelt til {villager.FirstName} {villager.LastName}"); // Debug output
+    }
+
     public static void AssignWeaponToVillager(BaseVillager villager)
     {
+        if (_weapons == null || _weapons.Count == 0)
+        {
+            throw new InvalidOperationException("Weapons collection is not initialized.");
+        }
+
         var weapon = _weapons[RNG.GetInstance().Next(_weapons.Count)];
-        var weaponItem = new Item(weapon.Name, weapon.Description);
+        var weaponItem = new Item(weapon.Name, weapon.Description, true);
         villager.AddItem(weaponItem);
+        Console.WriteLine($"Weapon {weaponItem.Name} assigned to {villager.FirstName} {villager.LastName}"); // Debug output
     }
 
     public override string ToString()
     {
-        return $"{base.ToString()} - Bevæbnet med: {Weapon} ({WeaponDescription})";
+        return $"{base.ToString()} - Bevæbnet med: {Weapon.Name} ({Weapon.Description})";
     }
 }
