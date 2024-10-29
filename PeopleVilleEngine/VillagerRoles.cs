@@ -24,7 +24,7 @@ namespace PeopleVilleEngine
         private void LoadNamesFromJsonFile()
         {
             string jsonFile = "lib\\roles.json";
-            Console.Write(jsonFile);
+
             if (!File.Exists(jsonFile))
             {
                 throw new FileNotFoundException($"JSON file not found: {jsonFile}");
@@ -32,10 +32,9 @@ namespace PeopleVilleEngine
 
             var json = File.ReadAllText(jsonFile);
             var rolesWrapper = JsonSerializer.Deserialize<RoleData[]>(json);
-
             _rolesWithWeights = rolesWrapper
                     .Select(r => (r.Role, r.Weight))
-                    .ToArray();
+                    .ToArray();     
         }
 
         private string GetWeightedRandomRole((string Role, int Weight)[] rolesWithWeights)

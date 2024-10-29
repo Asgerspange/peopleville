@@ -12,7 +12,7 @@ namespace PeopleVilleEngine.Events
         public EventSeverityLevel EventSeverity { get; set; }
         public string Title { get; set; } = "A robbery occurred.";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var executedEvents = new List<EventDetails>();
             var villagers = village.Villagers.OrderBy(v => Guid.NewGuid()).Take(2).ToList();
@@ -23,7 +23,7 @@ namespace PeopleVilleEngine.Events
                 var victim = village.Villagers.FirstOrDefault(v => v != robber);
                 if (robber == null || victim == null)
                 {
-                    executedEvents.Add(new EventDetails(Title, $"There is no criminal.", EventSeverity));
+                    executedEvents.Add(new EventDetails(Title, $"failed", EventSeverity));
                     return executedEvents;
                 }
                 decimal stolenAmount = victim.PersonalWallet.Money;
@@ -41,7 +41,7 @@ namespace PeopleVilleEngine.Events
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No robbery occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "failed", EventSeverity));
             }
 
             return executedEvents;

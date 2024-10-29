@@ -14,10 +14,10 @@ namespace PeopleVilleEngine
         public string Type { get; set; } = EventType.Robbery;
         public string Title { get; set; } = "A bank robbery occurred.";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var executedEvents = new List<EventDetails>();
-            var robber = village.Villagers.FirstOrDefault();
+            var robber = village.Villagers.FirstOrDefault(v => v.Role == "Kriminel");
 
             if (robber != null)
             {
@@ -28,7 +28,7 @@ namespace PeopleVilleEngine
             }
             else
             {
-                executedEvents.Add(new EventDetails(Title, "No bank robbery occurred.", EventSeverity));
+                executedEvents.Add(new EventDetails(Title, "failed", EventSeverity));
             }
 
             return executedEvents;

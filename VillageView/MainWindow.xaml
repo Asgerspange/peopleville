@@ -1,0 +1,64 @@
+﻿<Window x:Class="VillageView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VillageView"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1600" Background="#171b33">
+    <Window.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="#282828"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="VillagerButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#45465c"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#5d5e71" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid PreviewMouseDown="Grid_PreviewMouseDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Panel: Scrollable Villager Grid with Borders for each Housing Group -->
+        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,444,0" VerticalScrollBarVisibility="Auto">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <Label x:Name="dagLabel" Content="Dag 1" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left" Margin="10, 10, 0, 0"/>
+                    <Button Click="Button_Click" Content="Næste dag" Background="#45465c" FontSize="18" Foreground="White" Width="120" Height="40" DockPanel.Dock="Right" HorizontalAlignment="Right" BorderThickness="0" Margin="0, 10, 10, 0"/>
+                </DockPanel>
+                <StackPanel Name="mainPanel" Margin="10" MouseDown="mainPanel_MouseDown">
+                </StackPanel>
+            </DockPanel>
+        </ScrollViewer>
+
+        <!-- Right Panel: Info Panel -->
+        <StackPanel Background="#45465c" Grid.Column="1" Name="infoPanel" Width="450" MouseDown="infoPanel_MouseDown">
+            <Label Content="Person Info" Foreground="White" FontSize="32" FontFamily="Segoe UI" FontWeight="Medium" Margin="10, 7, 0, 0"/>
+            <Label x:Name="dayLabel" Content="Dag: 1" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <Label x:Name="eventLabel" Content="Event" Foreground="White" FontSize="16" FontFamily="Segoe UI" Margin="10, 0, 0, 0" />
+            <Label Content="Navn: Josefine Andersen" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <Label Content="Alder: 27" FontSize="16" Foreground="White" FontFamily="Segoe UI" Margin="10, 0, 0, 0"/>
+            <StackPanel x:Name="inventoryPanel" Margin="10">
+                
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

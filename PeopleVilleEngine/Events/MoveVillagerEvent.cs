@@ -12,27 +12,32 @@ namespace PeopleVilleEngine.Events
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Low;
         public string Title { get; set; } = "Move Villager Event";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var random = new Random();
             var villager = village.Villagers[random.Next(village.Villagers.Count)];
             var fromLocation = village.Locations.FirstOrDefault(loc => loc.Villagers().Contains(villager));
             var toLocation = village.Locations[random.Next(village.Locations.Count)];
 
-            if (fromLocation != null)
+            if (villager == null || fromLocation == null || toLocation == null)
             {
-                fromLocation.Villagers().Remove(villager);
-                toLocation.Villagers().Add(villager);
+                return new List<EventDetails>
+                {
+                new EventDetails(
+                        Title,
+                        "failed",
+                        EventSeverity
+                    )
+                };
             }
-
             return new List<EventDetails>
-                        {
-                            new EventDetails(
-                                Title,
-                                description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
-                                EventSeverity
-                            )
-                        };
+                {
+                    new EventDetails(
+                        Title,
+                        description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
+                        EventSeverity
+                    )
+                };
         }
     }
 }

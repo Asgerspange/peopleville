@@ -1,5 +1,21 @@
 [
   {
+<<<<<<< HEAD
+    "Role": "Postbud",
+    "Weight": 1
+  },
+  {
+    "Role": "Kriminel",
+    "Weight": 5
+  },
+  {
+    "Role": "Politi",
+    "Weight": 9
+  },
+  {
+    "Role": "Civil",
+    "Weight": 85
+=======
     "role": "Postbud",
     "weight": 1
   },
@@ -14,5 +30,6 @@
   {
     "role": "Civil",
     "weight": 85
+>>>>>>> master
   }
 ]

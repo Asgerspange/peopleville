@@ -12,7 +12,7 @@ namespace PeopleVilleEngine.Events
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Low;
         public string Title { get; set; } = "Went to SuperMarket";
 
-        public List<EventDetails> Execute(Village village)
+        public List<EventDetails> Execute(ref Village village)
         {
             var random = new Random();
             var villager = village.Villagers[random.Next(village.Villagers.Count)];
@@ -20,13 +20,25 @@ namespace PeopleVilleEngine.Events
                 {
                     ("Banan", 2m),
                     ("Æble", 1m),
-                    ("Appelsin", 1.5m),
+                    ("Appelsin", 3m),
                 };
 
             foreach (var item in itemsForSale)
             {
                 var price = item.Price;
                 var name = item.Name;
+
+                if (villager.PersonalWallet.Money - price <= 0)
+                {
+                    return new List<EventDetails>
+                    {
+                        new EventDetails(
+                            title: "Bought Food",
+                            description: "failed",
+                            severity: EventSeverityLevel.Low
+                        )
+                    };
+                }
 
                 villager.PersonalWallet.SpendMoney(price);
                 Item foodItem = new Item(name, name);

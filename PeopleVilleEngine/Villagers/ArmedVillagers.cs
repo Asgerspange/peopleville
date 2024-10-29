@@ -20,10 +20,6 @@ public class ArmedVillager : BaseVillager, IArmed
     static ArmedVillager()
     {
         LoadWeaponsFromJsonFileStatic("lib\\weaponDescription.json");
-        if (_weapons == null || _weapons.Count == 0)
-        {
-            throw new InvalidOperationException("Fejlede i load våben fra JSON fil.");
-        }
     }
 
     public ArmedVillager(Village village) : base(village)
@@ -42,13 +38,20 @@ public class ArmedVillager : BaseVillager, IArmed
     {
         try
         {
-            if (!File.Exists(jsonFile))
+            var weaponsData = new WeaponData
             {
-                throw new FileNotFoundException($" Filen {jsonFile} findes ikke.");
-            }
+                WeaponDescription = new List<(string Name, string Description)>
+                    {
+                        ("Bat", "Et bat af træ"),
+                        ("Uzi", "Et kompakt maskinegevær"),
+                        ("Hammer", "Ganske almindelig hammer"),
+                        ("Kniv", "Skarp og lille"),
+                        ("Morgenstjerne", "Solid jernkugle med skaft og kæde"),
+                        ("Knojern", "Lavet af jern"),
+                        ("Pisk", "Lavet af læder")
+                    }
+            };
 
-            string jsonData = File.ReadAllText(jsonFile);
-            var weaponsData = JsonSerializer.Deserialize<WeaponData>(jsonData);
 
             if (weaponsData != null && weaponsData.WeaponDescription != null)
             {

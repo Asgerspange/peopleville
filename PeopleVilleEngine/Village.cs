@@ -20,7 +20,6 @@ public class Village
         CreateVillage();
     }
 
-
     private void CreateVillage()
     {
         var villagers = _random.Next(10, 24);
@@ -74,7 +73,7 @@ public class Village
         {
             Console.WriteLine($"Landsby Creator loaded: {type}");
             outputVillagerCreators.Add((IVillagerCreator)Activator.CreateInstance(type));
-        }
+        } 
     }
 
     public override string ToString()

@@ -38,6 +38,6 @@ namespace PeopleVilleEngine
         string Type { get; set; }
         EventSeverityLevel EventSeverity { get; set; }
         string Title { get; set; }
-        List<EventDetails> Execute(Village village);
+        List<EventDetails> Execute(ref Village village);
     }
 }
