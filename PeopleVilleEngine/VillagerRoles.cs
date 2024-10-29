@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace PeopleVilleEngine
 {
@@ -12,7 +8,7 @@ namespace PeopleVilleEngine
         RNG _random;
         private static VillagerRoles? _instance = null;
 
-        private VillagerRoles()
+        public VillagerRoles()
         {
             _random = RNG.GetInstance();
             LoadNamesFromJsonFile();
@@ -28,20 +24,17 @@ namespace PeopleVilleEngine
         private void LoadNamesFromJsonFile()
         {
             string jsonFile = "lib\\roles.json";
-            Trace.WriteLine(jsonFile);
+
             if (!File.Exists(jsonFile))
             {
                 throw new FileNotFoundException($"JSON file not found: {jsonFile}");
             }
 
             var json = File.ReadAllText(jsonFile);
-            Trace.WriteLine(json);
             var rolesWrapper = JsonSerializer.Deserialize<RoleData[]>(json);
-            Trace.WriteLine(rolesWrapper);
             _rolesWithWeights = rolesWrapper
                     .Select(r => (r.Role, r.Weight))
-                    .ToArray();
-            Trace.WriteLine(_rolesWithWeights);            
+                    .ToArray();     
         }
 
         private string GetWeightedRandomRole((string Role, int Weight)[] rolesWithWeights)

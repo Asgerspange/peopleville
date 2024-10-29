@@ -8,7 +8,7 @@ namespace PeopleVilleEngine.Events
 {
     public class MoveVillagerEvent : IEvent
     {
-        public string Type { get; set; } = "MoveVillager";
+        public string Type { get; set; } = EventType.MoveVillager;
         public EventSeverityLevel EventSeverity { get; set; } = EventSeverityLevel.Low;
         public string Title { get; set; } = "Move Villager Event";
 
@@ -28,9 +28,9 @@ namespace PeopleVilleEngine.Events
             return new List<EventDetails>
                         {
                             new EventDetails(
-                                title: "Move Villager Event",
+                                Title,
                                 description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
-                                severity: EventSeverityLevel.Low
+                                EventSeverity
                             )
                         };
         }
