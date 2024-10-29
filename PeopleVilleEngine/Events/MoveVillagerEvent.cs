@@ -25,14 +25,21 @@ namespace PeopleVilleEngine.Events
                 toLocation.Villagers().Add(villager);
             }
 
+            if (villager == null || fromLocation == null || toLocation == null)
+            {
+                return new List<EventDetails>
+                {
+
+                };
+            }
             return new List<EventDetails>
-                        {
-                            new EventDetails(
-                                Title,
-                                description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
-                                EventSeverity
-                            )
-                        };
+                {
+                    new EventDetails(
+                        Title,
+                        description: $"Moved {villager.FirstName} from {fromLocation.Name} to {toLocation.Name}.",
+                        EventSeverity
+                    )
+                };
         }
     }
 }

@@ -245,7 +245,7 @@ namespace VillageView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDayDisplay();
+            village.Time.UpdateDay();
         }
     }
 }
