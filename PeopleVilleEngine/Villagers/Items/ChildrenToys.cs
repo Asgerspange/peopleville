@@ -13,18 +13,15 @@ namespace PeopleVilleEngine.Villagers.Items
     }
 
     // Base class for Toy
-    public abstract class Toy
+    public abstract class Toy : Item
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        protected Toy(string name, string description = "Legetøj")
+        protected Toy(string name, string description = "Legetøj") : base(name, description)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Legetøjets navn kan ikke være null eller tomt.", nameof(name));
             }
-             
+
             Name = name;
             Description = description;
         }
@@ -44,13 +41,21 @@ namespace PeopleVilleEngine.Villagers.Items
         {
             string jsonFile = "lib\\toys.json";
             if (!File.Exists(jsonFile))
+            {
+                Console.WriteLine($"File not found: {jsonFile}");
                 throw new FileNotFoundException(jsonFile);
+            }
 
             string jsonData = File.ReadAllText(jsonFile);
             var toysData = JsonSerializer.Deserialize<List<ChildrenToys>>(jsonData);
             if (toysData != null)
             {
                 toyList = toysData;
+                Console.WriteLine($"Loaded {toyList.Count} toys.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to deserialize toys data.");
             }
         }
 
